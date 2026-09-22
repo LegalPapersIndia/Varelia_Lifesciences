@@ -8,10 +8,7 @@ const navLinks = [
   {
     name: "About",
     path: "/about",
-    dropdown: [
-      { name: "About Us", path: "/about" },
-      { name: "Quality & Certifications", path: "/about#quality" },
-    ],
+ 
   },
   { name: "Products", path: "/products" },
   { name: "Franchise", path: "/franchise" },
