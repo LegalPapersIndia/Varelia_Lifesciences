@@ -144,7 +144,7 @@ const ContactInfoForm = () => {
               {
                 icon: <Mail size={18} />,
                 label: "Email",
-                value: "siddiquiareeb46@gmail.com",
+                value: "varelialifesciences@gmail.com",
               },
               {
                 icon: <Phone size={18} />,

@@ -6,18 +6,22 @@ import FranchiseCTA from "../components/Home/FranchiseCTA";
 import CTASection from "../components/Home/CTASection";
 import FaqAccordion from "../components/Home/FaqAccordion";
 import StatsCounter from "../components/Home/StatsCounter";
+import CertificationsStrip from "../components/Home/CertificationsStrip";
+import HowWeWork from "../components/Home/HowWeWork";
 
 const Home = () => {
   return (
     <>
-      <Hero />
-      <AboutSnapshot />
-          <StatsCounter />
-      <WhyChooseUs />
-      <ProductHighlights />
-      <FranchiseCTA />
-      <FaqAccordion />
-      <CTASection />
+    <Hero />
+<CertificationsStrip />
+<AboutSnapshot />
+<StatsCounter />
+<HowWeWork />
+<WhyChooseUs />
+<ProductHighlights />
+<FranchiseCTA />
+<FaqAccordion />
+<CTASection />
     </>
   );
 };
