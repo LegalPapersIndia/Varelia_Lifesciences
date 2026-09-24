@@ -7,9 +7,9 @@ const WHATSAPP_NUMBER = "919027864296";
 
 // PLACEHOLDER — replace with real social links once client provides them
 const SOCIAL_LINKS = [
-  { icon: <Facebook size={16} />, url: "#", label: "Facebook" },
-  { icon: <Instagram size={16} />, url: "#", label: "Instagram" },
-  { icon: <Linkedin size={16} />, url: "#", label: "LinkedIn" },
+  { icon: <Facebook size={16} />, url: "https://www.facebook.com/profile.php?id=61594758389870", label: "Facebook" },
+  { icon: <Instagram size={16} />, url: "https://www.instagram.com/varelialifesciences/", label: "Instagram" },
+  // { icon: <Linkedin size={16} />, url: "#", label: "LinkedIn" },
 ];
 
 const ContactInfoForm = () => {
