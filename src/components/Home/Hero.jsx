@@ -162,7 +162,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ShieldCheck, Truck, Globe2 } from "lucide-react";
 import heroImage from "../../assets/hero-image.png";
-import heroVideo from "../../assets/video.mp4";
+import heroVideo from "../../assets/home-banner.mp4";
 
 const Hero = () => {
   return (
