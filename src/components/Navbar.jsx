@@ -1,8 +1,254 @@
+// // // import { useState, useEffect } from "react";
+// // // import { Link, NavLink } from "react-router-dom";
+// // // import { motion, AnimatePresence } from "framer-motion";
+// // // import { Menu, X, ChevronDown } from "lucide-react";
+// // // import logo from "../assets/logo.jpeg"; 
+// // // import RotatingGlobe from "./RotatingGlobe";
+
+// // // const navLinks = [
+// // //   { name: "Home", path: "/" },
+// // //   {
+// // //     name: "About",
+// // //     path: "/about",
+ 
+// // //   },
+// // //   { name: "Products", path: "/products" },
+// // //   { name: "Franchise", path: "/franchise" },
+// // //   { name: "Contact", path: "/contact" },
+// // // ];
+
+// // // const Navbar = () => {
+// // //   const [isOpen, setIsOpen] = useState(false);
+// // //   const [scrolled, setScrolled] = useState(false);
+// // //   const [aboutOpen, setAboutOpen] = useState(false);
+// // //   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
+
+// // //   useEffect(() => {
+// // //     const handleScroll = () => setScrolled(window.scrollY > 20);
+// // //     window.addEventListener("scroll", handleScroll);
+// // //     return () => window.removeEventListener("scroll", handleScroll);
+// // //   }, []);
+
+// // //   useEffect(() => {
+// // //     document.body.style.overflow = isOpen ? "hidden" : "auto";
+// // //     return () => {
+// // //       document.body.style.overflow = "auto";
+// // //     };
+// // //   }, [isOpen]);
+
+// // //   return (
+// // //     <header
+// // //       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+// // //         scrolled
+// // //           ? "bg-white/95 backdrop-blur-md shadow-md py-2"
+// // //           : "bg-white/80 backdrop-blur-sm py-4"
+// // //       }`}
+// // //     >
+// // //       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+// // //         {/* Logo */}
+// // //       {/* Logo */}
+// // // <Link to="/" className="flex items-center gap-2 shrink-0">
+// // //   <img
+// // //     src={logo}
+// // //     alt="Varelia Lifesciences"
+// // //     className={`transition-all duration-300 object-contain ${
+// // //       scrolled ? "h-7" : "h-8"
+// // //     }`}
+// // //   />
+// // //   <span
+// // //     className={`font-bold tracking-tight transition-all duration-300 ${
+// // //       scrolled ? "text-base" : "text-lg"
+// // //     }`}
+// // //   >
+// // //     <span className="text-sky-600">Varelia</span>{" "}
+// // //     <span className="text-slate-800">Lifesciences</span>
+// // //   </span>
+// // // </Link>
+
+// // //         {/* Desktop Nav — pill box container */}
+// // //         <ul className="hidden lg:flex items-center gap-1 bg-sky-50 border border-sky-200 rounded-xl px-2 py-2">
+// // //           {navLinks.map((link) => (
+// // //             <li
+// // //               key={link.name}
+// // //               className="relative"
+// // //               onMouseEnter={() => link.dropdown && setAboutOpen(true)}
+// // //               onMouseLeave={() => link.dropdown && setAboutOpen(false)}
+// // //             >
+// // //               {link.dropdown ? (
+// // //                 <button className="flex items-center gap-1 px-4 py-2 rounded-lg text-slate-700 font-medium text-sm hover:bg-white hover:text-sky-700 hover:shadow-sm transition-all duration-200">
+// // //                   {link.name}
+// // //                   <ChevronDown
+// // //                     size={15}
+// // //                     className={`transition-transform duration-200 ${
+// // //                       aboutOpen ? "rotate-180" : ""
+// // //                     }`}
+// // //                   />
+// // //                 </button>
+// // //               ) : (
+// // //                 <NavLink
+// // //                   to={link.path}
+// // //                   className={({ isActive }) =>
+// // //                     `block px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 ${
+// // //                       isActive
+// // //                         ? "bg-white text-sky-700 shadow-sm"
+// // //                         : "text-slate-700 hover:bg-white hover:text-sky-700 hover:shadow-sm"
+// // //                     }`
+// // //                   }
+// // //                 >
+// // //                   {link.name}
+// // //                 </NavLink>
+// // //               )}
+
+// // //               {/* Dropdown */}
+// // //               <AnimatePresence>
+// // //                 {link.dropdown && aboutOpen && (
+// // //                   <motion.ul
+// // //                     initial={{ opacity: 0, y: 10 }}
+// // //                     animate={{ opacity: 1, y: 0 }}
+// // //                     exit={{ opacity: 0, y: 10 }}
+// // //                     transition={{ duration: 0.2 }}
+// // //                     className="absolute top-full left-0 mt-2 w-60 bg-white rounded-xl shadow-xl border border-slate-100 py-2 overflow-hidden"
+// // //                   >
+// // //                     {link.dropdown.map((item) => (
+// // //                       <li key={item.name}>
+// // //                         <NavLink
+// // //                           to={item.path}
+// // //                           className="block px-4 py-2 text-sm text-slate-700 hover:bg-sky-50 hover:text-sky-700 transition-colors"
+// // //                         >
+// // //                           {item.name}
+// // //                         </NavLink>
+// // //                       </li>
+// // //                     ))}
+// // //                   </motion.ul>
+// // //                 )}
+// // //               </AnimatePresence>
+// // //             </li>
+// // //           ))}
+// // //         </ul>
+
+// // //         {/* CTA Button - Desktop */}
+// // //         <Link
+// // //           to="/franchise"
+// // //           className="hidden lg:inline-flex items-center bg-sky-600 text-white font-medium px-5 py-2.5 rounded-full hover:bg-sky-700 hover:scale-105 transition-all duration-300 shadow-md shrink-0"
+// // //         >
+// // //           Get Franchise
+// // //         </Link>
+
+// // //         {/* Mobile Toggle */}
+// // //         <button
+// // //           className="lg:hidden text-slate-800 z-50"
+// // //           onClick={() => setIsOpen(!isOpen)}
+// // //           aria-label="Toggle menu"
+// // //         >
+// // //           {isOpen ? <X size={28} /> : <Menu size={28} />}
+// // //         </button>
+// // //       </nav>
+
+// // //       {/* Mobile Menu */}
+// // //       <AnimatePresence>
+// // //         {isOpen && (
+// // //           <motion.div
+// // //             initial={{ opacity: 0, height: 0 }}
+// // //             animate={{ opacity: 1, height: "100vh" }}
+// // //             exit={{ opacity: 0, height: 0 }}
+// // //             transition={{ duration: 0.3, ease: "easeInOut" }}
+// // //             className="lg:hidden fixed top-0 left-0 w-full bg-white overflow-hidden pt-24 pb-8 px-6"
+// // //           >
+// // //             {/* Pill box container — mobile */}
+// // //             <div className="bg-sky-50 border border-sky-200 rounded-xl p-2 flex flex-col gap-1">
+// // //               {navLinks.map((link, i) => (
+// // //                 <motion.div
+// // //                   key={link.name}
+// // //                   initial={{ opacity: 0, x: -20 }}
+// // //                   animate={{ opacity: 1, x: 0 }}
+// // //                   transition={{ delay: i * 0.06 }}
+// // //                 >
+// // //                   {link.dropdown ? (
+// // //                     <>
+// // //                       <button
+// // //                         onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
+// // //                         className="flex items-center justify-between w-full px-4 py-3 rounded-lg text-slate-800 font-medium text-base hover:bg-white transition-colors"
+// // //                       >
+// // //                         {link.name}
+// // //                         <ChevronDown
+// // //                           size={18}
+// // //                           className={`transition-transform duration-200 ${
+// // //                             mobileAboutOpen ? "rotate-180" : ""
+// // //                           }`}
+// // //                         />
+// // //                       </button>
+// // //                       <AnimatePresence>
+// // //                         {mobileAboutOpen && (
+// // //                           <motion.div
+// // //                             initial={{ opacity: 0, height: 0 }}
+// // //                             animate={{ opacity: 1, height: "auto" }}
+// // //                             exit={{ opacity: 0, height: 0 }}
+// // //                             className="pl-4 pb-2 flex flex-col gap-1 overflow-hidden"
+// // //                           >
+// // //                             {link.dropdown.map((item) => (
+// // //                               <NavLink
+// // //                                 key={item.name}
+// // //                                 to={item.path}
+// // //                                 onClick={() => setIsOpen(false)}
+// // //                                 className="block px-4 py-2 rounded-lg text-slate-600 text-sm hover:bg-white transition-colors"
+// // //                               >
+// // //                                 {item.name}
+// // //                               </NavLink>
+// // //                             ))}
+// // //                           </motion.div>
+// // //                         )}
+// // //                       </AnimatePresence>
+// // //                     </>
+// // //                   ) : (
+// // //                     <NavLink
+// // //                       to={link.path}
+// // //                       onClick={() => setIsOpen(false)}
+// // //                       className={({ isActive }) =>
+// // //                         `block px-4 py-3 rounded-lg font-medium text-base transition-colors ${
+// // //                           isActive
+// // //                             ? "bg-white text-sky-700 shadow-sm"
+// // //                             : "text-slate-800 hover:bg-white"
+// // //                         }`
+// // //                       }
+// // //                     >
+// // //                       {link.name}
+// // //                     </NavLink>
+// // //                   )}
+// // //                 </motion.div>
+// // //               ))}
+// // //             </div>
+
+// // //             <motion.div
+// // //               initial={{ opacity: 0, x: -20 }}
+// // //               animate={{ opacity: 1, x: 0 }}
+// // //               transition={{ delay: navLinks.length * 0.06 }}
+// // //               className="mt-4"
+// // //             >
+// // //               <Link
+// // //                 to="/franchise"
+// // //                 onClick={() => setIsOpen(false)}
+// // //                 className="block text-center bg-sky-600 text-white font-medium px-5 py-3 rounded-full hover:bg-sky-700 transition-colors"
+// // //               >
+// // //                 Get Franchise
+// // //               </Link>
+// // //             </motion.div>
+// // //           </motion.div>
+// // //         )}
+// // //       </AnimatePresence>
+// // //     </header>
+// // //   );
+// // // };
+
+// // // export default Navbar;
+
+
+
+
 // // import { useState, useEffect } from "react";
 // // import { Link, NavLink } from "react-router-dom";
 // // import { motion, AnimatePresence } from "framer-motion";
 // // import { Menu, X, ChevronDown } from "lucide-react";
-// // import logo from "../assets/logo.jpeg"; 
+// // import logo from "../assets/logo.jpeg";
 // // import RotatingGlobe from "./RotatingGlobe";
 
 // // const navLinks = [
@@ -10,7 +256,6 @@
 // //   {
 // //     name: "About",
 // //     path: "/about",
- 
 // //   },
 // //   { name: "Products", path: "/products" },
 // //   { name: "Franchise", path: "/franchise" },
@@ -46,24 +291,23 @@
 // //     >
 // //       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
 // //         {/* Logo */}
-// //       {/* Logo */}
-// // <Link to="/" className="flex items-center gap-2 shrink-0">
-// //   <img
-// //     src={logo}
-// //     alt="Varelia Lifesciences"
-// //     className={`transition-all duration-300 object-contain ${
-// //       scrolled ? "h-7" : "h-8"
-// //     }`}
-// //   />
-// //   <span
-// //     className={`font-bold tracking-tight transition-all duration-300 ${
-// //       scrolled ? "text-base" : "text-lg"
-// //     }`}
-// //   >
-// //     <span className="text-sky-600">Varelia</span>{" "}
-// //     <span className="text-slate-800">Lifesciences</span>
-// //   </span>
-// // </Link>
+// //         <Link to="/" className="flex items-center gap-2 shrink-0">
+// //           <img
+// //             src={logo}
+// //             alt="Varelia Lifesciences"
+// //             className={`transition-all duration-300 object-contain ${
+// //               scrolled ? "h-7" : "h-8"
+// //             }`}
+// //           />
+// //           <span
+// //             className={`font-bold tracking-tight transition-all duration-300 ${
+// //               scrolled ? "text-base" : "text-lg"
+// //             }`}
+// //           >
+// //             <span className="text-sky-600">Varelia</span>{" "}
+// //             <span className="text-slate-800">Lifesciences</span>
+// //           </span>
+// //         </Link>
 
 // //         {/* Desktop Nav — pill box container */}
 // //         <ul className="hidden lg:flex items-center gap-1 bg-sky-50 border border-sky-200 rounded-xl px-2 py-2">
@@ -126,13 +370,16 @@
 // //           ))}
 // //         </ul>
 
-// //         {/* CTA Button - Desktop */}
-// //         <Link
-// //           to="/franchise"
-// //           className="hidden lg:inline-flex items-center bg-sky-600 text-white font-medium px-5 py-2.5 rounded-full hover:bg-sky-700 hover:scale-105 transition-all duration-300 shadow-md shrink-0"
-// //         >
-// //           Get Franchise
-// //         </Link>
+// //         {/* Globe + CTA Button - Desktop */}
+// //         <div className="hidden lg:flex items-center gap-3 shrink-0">
+// //           <RotatingGlobe />
+// //           <Link
+// //             to="/franchise"
+// //             className="inline-flex items-center bg-sky-600 text-white font-medium px-5 py-2.5 rounded-full hover:bg-sky-700 hover:scale-105 transition-all duration-300 shadow-md"
+// //           >
+// //             Get Franchise
+// //           </Link>
+// //         </div>
 
 // //         {/* Mobile Toggle */}
 // //         <button
@@ -222,12 +469,13 @@
 // //               initial={{ opacity: 0, x: -20 }}
 // //               animate={{ opacity: 1, x: 0 }}
 // //               transition={{ delay: navLinks.length * 0.06 }}
-// //               className="mt-4"
+// //               className="mt-4 flex items-center justify-center gap-4"
 // //             >
+// //               <RotatingGlobe size={30} />
 // //               <Link
 // //                 to="/franchise"
 // //                 onClick={() => setIsOpen(false)}
-// //                 className="block text-center bg-sky-600 text-white font-medium px-5 py-3 rounded-full hover:bg-sky-700 transition-colors"
+// //                 className="flex-1 text-center bg-sky-600 text-white font-medium px-5 py-3 rounded-full hover:bg-sky-700 transition-colors"
 // //               >
 // //                 Get Franchise
 // //               </Link>
@@ -243,13 +491,12 @@
 
 
 
-
 // import { useState, useEffect } from "react";
 // import { Link, NavLink } from "react-router-dom";
 // import { motion, AnimatePresence } from "framer-motion";
 // import { Menu, X, ChevronDown } from "lucide-react";
 // import logo from "../assets/logo.jpeg";
-// import RotatingGlobe from "./RotatingGlobe";
+// import globeVideo from "../assets/Globe.webm";
 
 // const navLinks = [
 //   { name: "Home", path: "/" },
@@ -258,7 +505,7 @@
 //     path: "/about",
 //   },
 //   { name: "Products", path: "/products" },
-//   { name: "Franchise", path: "/franchise" },
+//   { name: "Global Franchise", path: "/franchise" },
 //   { name: "Contact", path: "/contact" },
 // ];
 
@@ -370,9 +617,18 @@
 //           ))}
 //         </ul>
 
-//         {/* Globe + CTA Button - Desktop */}
+//         {/* Globe video + CTA Button - Desktop */}
 //         <div className="hidden lg:flex items-center gap-3 shrink-0">
-//           <RotatingGlobe />
+//           <video
+//             autoPlay
+//             loop
+//             muted
+//             playsInline
+//             preload="auto"
+//             className="w-6 h-6 object-contain"
+//           >
+//             <source src={globeVideo} type="video/webm" />
+//           </video>
 //           <Link
 //             to="/franchise"
 //             className="inline-flex items-center bg-sky-600 text-white font-medium px-5 py-2.5 rounded-full hover:bg-sky-700 hover:scale-105 transition-all duration-300 shadow-md"
@@ -471,7 +727,16 @@
 //               transition={{ delay: navLinks.length * 0.06 }}
 //               className="mt-4 flex items-center justify-center gap-4"
 //             >
-//               <RotatingGlobe size={30} />
+//               <video
+//                 autoPlay
+//                 loop
+//                 muted
+//                 playsInline
+//                 preload="auto"
+//                 className="w-8 h-8 object-contain"
+//               >
+//                 <source src={globeVideo} type="video/webm" />
+//               </video>
 //               <Link
 //                 to="/franchise"
 //                 onClick={() => setIsOpen(false)}
@@ -500,12 +765,12 @@ import globeVideo from "../assets/Globe.webm";
 
 const navLinks = [
   { name: "Home", path: "/" },
-  {
-    name: "About",
-    path: "/about",
-  },
+  { name: "About", path: "/about" },
   { name: "Products", path: "/products" },
-  { name: "Global Franchise", path: "/franchise" },
+  { name: "Capabilities", path: "/capabilities" },
+  { name: "Global", path: "/global" },
+  { name: "Quality", path: "/quality" },
+  { name: "Partners", path: "/partners" },
   { name: "Contact", path: "/contact" },
 ];
 
@@ -557,7 +822,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Nav — pill box container */}
-        <ul className="hidden lg:flex items-center gap-1 bg-sky-50 border border-sky-200 rounded-xl px-2 py-2">
+        <ul className="hidden xl:flex items-center gap-1 bg-sky-50 border border-sky-200 rounded-xl px-2 py-2">
           {navLinks.map((link) => (
             <li
               key={link.name}
@@ -566,7 +831,7 @@ const Navbar = () => {
               onMouseLeave={() => link.dropdown && setAboutOpen(false)}
             >
               {link.dropdown ? (
-                <button className="flex items-center gap-1 px-4 py-2 rounded-lg text-slate-700 font-medium text-sm hover:bg-white hover:text-sky-700 hover:shadow-sm transition-all duration-200">
+                <button className="flex items-center gap-1 px-3.5 py-2 rounded-lg text-slate-700 font-medium text-sm hover:bg-white hover:text-sky-700 hover:shadow-sm transition-all duration-200">
                   {link.name}
                   <ChevronDown
                     size={15}
@@ -578,8 +843,9 @@ const Navbar = () => {
               ) : (
                 <NavLink
                   to={link.path}
+                  end={link.path === "/"}
                   className={({ isActive }) =>
-                    `block px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 ${
+                    `block px-3.5 py-2 rounded-lg font-medium text-sm transition-all duration-200 ${
                       isActive
                         ? "bg-white text-sky-700 shadow-sm"
                         : "text-slate-700 hover:bg-white hover:text-sky-700 hover:shadow-sm"
@@ -618,7 +884,7 @@ const Navbar = () => {
         </ul>
 
         {/* Globe video + CTA Button - Desktop */}
-        <div className="hidden lg:flex items-center gap-3 shrink-0">
+        <div className="hidden xl:flex items-center gap-3 shrink-0">
           <video
             autoPlay
             loop
@@ -630,16 +896,16 @@ const Navbar = () => {
             <source src={globeVideo} type="video/webm" />
           </video>
           <Link
-            to="/franchise"
-            className="inline-flex items-center bg-sky-600 text-white font-medium px-5 py-2.5 rounded-full hover:bg-sky-700 hover:scale-105 transition-all duration-300 shadow-md"
+            to="/contact"
+            className="inline-flex items-center bg-sky-600 text-white font-medium px-5 py-2.5 rounded-full hover:bg-sky-700 hover:scale-105 transition-all duration-300 shadow-md whitespace-nowrap"
           >
-            Get Franchise
+            Export Enquiry
           </Link>
         </div>
 
         {/* Mobile Toggle */}
         <button
-          className="lg:hidden text-slate-800 z-50"
+          className="xl:hidden text-slate-800 z-50"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -655,7 +921,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "100vh" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="lg:hidden fixed top-0 left-0 w-full bg-white overflow-hidden pt-24 pb-8 px-6"
+            className="xl:hidden fixed top-0 left-0 w-full bg-white overflow-y-auto pt-24 pb-8 px-6"
           >
             {/* Pill box container — mobile */}
             <div className="bg-sky-50 border border-sky-200 rounded-xl p-2 flex flex-col gap-1">
@@ -705,6 +971,7 @@ const Navbar = () => {
                   ) : (
                     <NavLink
                       to={link.path}
+                      end={link.path === "/"}
                       onClick={() => setIsOpen(false)}
                       className={({ isActive }) =>
                         `block px-4 py-3 rounded-lg font-medium text-base transition-colors ${
@@ -738,11 +1005,11 @@ const Navbar = () => {
                 <source src={globeVideo} type="video/webm" />
               </video>
               <Link
-                to="/franchise"
+                to="/contact"
                 onClick={() => setIsOpen(false)}
                 className="flex-1 text-center bg-sky-600 text-white font-medium px-5 py-3 rounded-full hover:bg-sky-700 transition-colors"
               >
-                Get Franchise
+                Export Enquiry
               </Link>
             </motion.div>
           </motion.div>

@@ -1,7 +1,7 @@
 import AboutHero from "../components/About/AboutHero";
 import CompanyStory from "../components/About/CompanyStory";
 import MissionVision from "../components/About/MissionVision";
-import QualityCommitment from "../components/About/QualityCommitment";
+// import QualityCommitment from "../components/Quality/QualityCommitment";
 
 const About = () => {
   return (
@@ -9,7 +9,7 @@ const About = () => {
       <AboutHero />
       <CompanyStory />
       <MissionVision />
-      <QualityCommitment />
+      {/* <QualityCommitment /> */}
     </>
   );
 };
