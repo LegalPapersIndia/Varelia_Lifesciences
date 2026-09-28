@@ -146,7 +146,7 @@ import {
 import franchiseSideImg from "../../assets/franchise-side1.png";
 
 // Client's WhatsApp number
-const WHATSAPP_NUMBER = "919027864296";
+const WHATSAPP_NUMBER = "919760222668";
 
 const highlights = [
   "Complete Business Support",
