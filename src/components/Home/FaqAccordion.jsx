@@ -14,11 +14,11 @@ const categories = [
       },
       {
         q: "Is Varelia Lifesciences a registered company?",
-        a: "Yes, we are a registered private limited company, incorporated in 2023 and engaged in pharmaceutical trade.",
+        a: "Yes, we are a registered private limited company, incorporated in 2023 and engaged in pharmaceutical trading.",
       },
       {
         q: "Do you manufacture the products yourselves?",
-        a: "We source our products from licensed Indian manufacturers under third-party arrangements, ensuring consistent quality across every batch.",
+        a: "We are a pharmaceutical trading company. Products are manufactured through qualified third-party manufacturing partners, selected based on product, quality and market requirements.",
       },
     ],
   },
@@ -33,30 +33,30 @@ const categories = [
       },
       {
         q: "Do you sell only in India or export as well?",
-        a: "We sell domestically across India and also export to international markets as a pharmaceutical merchant exporter.",
+        a: "We supply domestically across India and also coordinate export for international importers, distributors and pharmaceutical partners.",
       },
       {
         q: "Can I get bulk pricing for hospital or distributor orders?",
-        a: "Yes, we offer bulk pricing for hospitals, distributors, and healthcare providers. Reach out via our Contact page for a quote.",
+        a: "Yes, pricing is discussed based on product, quantity and market. Reach out via our Contact page to share your requirement.",
       },
     ],
   },
   {
-    key: "franchise",
-    label: "Franchise",
+    key: "partners",
+    label: "Partners",
     icon: Handshake,
     faqs: [
       {
-        q: "How do I apply for a PCD franchise?",
-        a: "Fill out the franchise enquiry form on our Franchise page, and our team will connect with you on WhatsApp to discuss further.",
+        q: "How do I get in touch as a distributor, importer or manufacturer?",
+        a: "Fill out the partner enquiry form on our Partners page, and our team will connect with you to discuss your requirement.",
       },
       {
-        q: "Do you offer monopoly/area rights?",
-        a: "Yes, we offer exclusive area rights to franchise partners to help you build your business without internal competition.",
+        q: "What kind of partnerships does Varelia work with?",
+        a: "We work with three types of partners: distribution partners, import/export partners, and qualified manufacturing partners.",
       },
       {
-        q: "Is prior pharma experience required for a franchise?",
-        a: "While relevant experience helps, it isn't mandatory. We provide complete onboarding and business support to our partners.",
+        q: "What is required to become a long-term partner?",
+        a: "Long-term partnerships are built around product suitability, quality documentation, commercial clarity, regulatory requirements and dependable execution.",
       },
     ],
   },
