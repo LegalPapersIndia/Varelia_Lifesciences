@@ -175,6 +175,194 @@
 
 
 
+// import { Link } from "react-router-dom";
+// import { motion } from "framer-motion";
+// import { Facebook, Instagram, Linkedin, MapPin, Mail, Phone, Globe } from "lucide-react";
+// import logo from "../assets/logo.png";
+
+// const NAV_LINKS = [
+//   { label: "Home", path: "/" },
+//   { label: "About", path: "/about" },
+//   { label: "Products", path: "/products" },
+//   { label: "Franchise", path: "/franchise" },
+//   { label: "Contact", path: "/contact" },
+// ];
+
+// // PLACEHOLDER — replace with real social links once client provides them
+// const SOCIAL_LINKS = [
+//   { icon: <Facebook size={16} />, url: "https://www.facebook.com/profile.php?id=61594758389870", label: "Facebook" },
+//   { icon: <Instagram size={16} />, url: "https://www.instagram.com/varelialifesciences/", label: "Instagram" },
+//   // { icon: <Linkedin size={16} />, url: "#", label: "LinkedIn" },
+// ];
+
+// export default function Footer() {
+//   const year = new Date().getFullYear();
+
+//   return (
+//     <footer className="bg-slate-900 text-slate-300 border-t border-sky-500/10">
+//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-16">
+//         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-8">
+//           {/* Brand */}
+//           <motion.div
+//             initial={{ opacity: 0, y: 20 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             viewport={{ once: true }}
+//             transition={{ duration: 0.6 }}
+//             className="sm:col-span-2 md:col-span-1"
+//           >
+//             <div className="flex items-center gap-2 mb-3">
+//               <img
+//                 src={logo}
+//                 alt="Varelia Lifesciences"
+//                 className="h-8 w-auto object-contain"
+//               />
+//               <h3 className="text-lg font-bold text-white">
+//                 <span className="text-sky-400">Varelia</span> Lifesciences
+//               </h3>
+//             </div>
+//             <p className="text-sm text-slate-400 leading-relaxed max-w-xs">
+//               A trusted pharmaceutical merchant exporter and domestic
+//               supplier, delivering quality-assured medicines across India
+//               and international markets.
+//             </p>
+//           </motion.div>
+
+//           {/* Quick Links */}
+//           <motion.div
+//             initial={{ opacity: 0, y: 20 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             viewport={{ once: true }}
+//             transition={{ duration: 0.6, delay: 0.1 }}
+//           >
+//             <h4 className="text-sm font-semibold tracking-[0.2em] uppercase text-sky-400 mb-5">
+//               Quick Links
+//             </h4>
+//             <ul className="flex flex-col gap-3">
+//               {NAV_LINKS.map((link) => (
+//                 <li key={link.path}>
+//                   <Link
+//                     to={link.path}
+//                     className="text-sm text-slate-400 hover:text-sky-400 transition-colors duration-300"
+//                   >
+//                     {link.label}
+//                   </Link>
+//                 </li>
+//               ))}
+//             </ul>
+//           </motion.div>
+
+//           {/* Contact */}
+//           <motion.div
+//             initial={{ opacity: 0, y: 20 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             viewport={{ once: true }}
+//             transition={{ duration: 0.6, delay: 0.2 }}
+//           >
+//             <h4 className="text-sm font-semibold tracking-[0.2em] uppercase text-sky-400 mb-5">
+//               Contact
+//             </h4>
+//             <ul className="flex flex-col gap-4">
+//               <li className="flex items-start gap-3">
+//                 <MapPin size={16} className="text-sky-400 mt-0.5 shrink-0" />
+//                 <span className="text-sm text-slate-400">
+//                   2nd Floor, Opposite Grand Square, Hapur Road, Meerut, Uttar
+//                   Pradesh – 250002
+//                 </span>
+//               </li>
+//               <li className="flex items-start gap-3">
+//                 <Mail size={16} className="text-sky-400 mt-0.5 shrink-0" />
+//                 <div className="flex flex-col gap-1">
+//                   <a
+//                     href="mailto:export@varelialifesciences.com"
+//                     className="text-sm text-slate-400 break-all hover:text-sky-400 transition-colors duration-300"
+//                   >
+//                     export@varelialifesciences.com
+//                   </a>
+//                   <a
+//                     href="mailto:domestic@varelialifesciences.com"
+//                     className="text-sm text-slate-400 break-all hover:text-sky-400 transition-colors duration-300"
+//                   >
+//                     domestic@varelialifesciences.com
+//                   </a>
+//                 </div>
+//               </li>
+//               <li className="flex items-start gap-3">
+//                 <Phone size={16} className="text-sky-400 mt-0.5 shrink-0" />
+//                 <a
+//                   href="tel:+919760222668"
+//                   className="text-sm text-slate-400 hover:text-sky-400 transition-colors duration-300"
+//                 >
+//                   +91 97602 22668
+//                 </a>
+//               </li>
+//             </ul>
+//           </motion.div>
+
+//           {/* Business Hours + Social */}
+//           <motion.div
+//             initial={{ opacity: 0, y: 20 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             viewport={{ once: true }}
+//             transition={{ duration: 0.6, delay: 0.3 }}
+//           >
+//             {/* <h4 className="text-sm font-semibold tracking-[0.2em] uppercase text-sky-400 mb-5">
+//               Business Hours
+//             </h4>
+//             <ul className="flex flex-col gap-2 mb-6">
+//               <li className="text-sm text-slate-400">
+//                 Mon - Sat: 9:00 AM - 7:00 PM
+//               </li>
+//               <li className="text-sm text-slate-400">Sunday: Closed</li>
+//             </ul> */}
+
+//             <h4 className="text-sm font-semibold tracking-[0.2em] uppercase text-sky-400 mb-4">
+//               Follow Us
+//             </h4>
+//             <div className="flex gap-3">
+//               {SOCIAL_LINKS.map((social, index) => (
+//                 <motion.a
+//                   key={index}
+//                   href={social.url}
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   aria-label={social.label}
+//                   whileHover={{ y: -4, scale: 1.08 }}
+//                   className="w-10 h-10 flex items-center justify-center rounded-full border border-sky-500/30 text-slate-400 hover:text-white hover:bg-sky-500 hover:border-sky-500 transition-all duration-300"
+//                 >
+//                   {social.icon}
+//                 </motion.a>
+//               ))}
+//             </div>
+//           </motion.div>
+//         </div>
+
+//         {/* Divider */}
+//         <div className="h-px bg-gradient-to-r from-transparent via-sky-500/30 to-transparent my-10"></div>
+
+//         {/* Bottom bar */}
+//         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+//           <p>© {year} Varelia Lifesciences Pvt. Ltd. All rights reserved.</p>
+//           <p>Products manufactured under license by third-party manufacturers.</p>
+//           <p>
+//             Developed By{" "}
+// <a
+//               href="https://www.legalpapersindia.com/"
+//               target="_blank"
+//               rel="noopener noreferrer"
+//               className="hover:text-sky-400 transition-colors duration-300"
+//             >
+//               Legal Papers India
+//             </a>
+//           </p>
+//         </div>
+//       </div>
+//     </footer>
+//   );
+// }
+
+
+
+
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Facebook, Instagram, Linkedin, MapPin, Mail, Phone, Globe } from "lucide-react";
@@ -184,7 +372,10 @@ const NAV_LINKS = [
   { label: "Home", path: "/" },
   { label: "About", path: "/about" },
   { label: "Products", path: "/products" },
-  { label: "Franchise", path: "/franchise" },
+  { label: "Capabilities", path: "/capabilities" },
+  { label: "Global", path: "/global" },
+  { label: "Quality", path: "/quality" },
+  { label: "Partners", path: "/partners" },
   { label: "Contact", path: "/contact" },
 ];
 
@@ -237,7 +428,7 @@ export default function Footer() {
             <h4 className="text-sm font-semibold tracking-[0.2em] uppercase text-sky-400 mb-5">
               Quick Links
             </h4>
-            <ul className="flex flex-col gap-3">
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.path}>
                   <Link
@@ -286,15 +477,24 @@ export default function Footer() {
                   </a>
                 </div>
               </li>
-              <li className="flex items-start gap-3">
-                <Phone size={16} className="text-sky-400 mt-0.5 shrink-0" />
-                <a
-                  href="tel:+919760222668"
-                  className="text-sm text-slate-400 hover:text-sky-400 transition-colors duration-300"
-                >
-                  +91 97602 22668
-                </a>
-              </li>
+             <li className="flex items-start gap-3">
+  <Phone size={16} className="text-sky-400 mt-0.5 shrink-0" />
+  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+    <a
+      href="tel:+919027864296"
+      className="text-sm text-slate-400 hover:text-sky-400 transition-colors duration-300"
+    >
+      +91 90278 64296
+    </a>
+    <span className="text-slate-600">•</span>
+    <a
+      href="tel:+919997422668"
+      className="text-sm text-slate-400 hover:text-sky-400 transition-colors duration-300"
+    >
+      +91 99974 22668
+    </a>
+  </div>
+</li>
             </ul>
           </motion.div>
 
@@ -345,7 +545,7 @@ export default function Footer() {
           <p>Products manufactured under license by third-party manufacturers.</p>
           <p>
             Developed By{" "}
-<a
+            <a
               href="https://www.legalpapersindia.com/"
               target="_blank"
               rel="noopener noreferrer"

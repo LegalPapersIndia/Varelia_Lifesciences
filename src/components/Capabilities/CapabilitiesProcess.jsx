@@ -6,25 +6,33 @@ import {
   PackageCheck,
   CheckCircle2,
 } from "lucide-react";
+import requirementImg from "../../assets/Requirement-Review.jpg";
+import partnerImg from "../../assets/Partner-Product.jpg";
+import documentationImg from "../../assets/Documentation-Commercials.jpg";
+import supplyImg from "../../assets/Supply-Delivery.jpg";
 
 const steps = [
   {
     icon: ClipboardList,
+    image: requirementImg,
     title: "Requirement Review",
     desc: "We understand your product, pack size, quantity and market requirements.",
   },
   {
     icon: Puzzle,
+    image: partnerImg,
     title: "Partner & Product Match",
     desc: "The requirement is matched with a suitable qualified manufacturing partner.",
   },
   {
     icon: FileCheck,
+    image: documentationImg,
     title: "Documentation & Commercials",
     desc: "Specifications, COA and applicable documents are shared and commercial terms aligned.",
   },
   {
     icon: PackageCheck,
+    image: supplyImg,
     title: "Supply & Delivery",
     desc: "Order coordination, dispatch and delivery through planned logistics.",
   },
@@ -80,7 +88,7 @@ const CapabilitiesProcess = () => {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 1.1, ease: "easeInOut" }}
             style={{ transformOrigin: "left" }}
-            className="hidden lg:block absolute top-[2.25rem] left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-sky-200 via-sky-400 to-sky-200"
+            className="hidden lg:block absolute top-[4.5rem] left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-sky-200 via-sky-400 to-sky-200 z-0"
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
@@ -93,28 +101,44 @@ const CapabilitiesProcess = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.5, delay: i * 0.12 }}
-                  whileHover={{ y: -6 }}
-                  className="group relative bg-white border border-sky-100 rounded-2xl p-6 pt-9 shadow-sm hover:shadow-lg hover:border-sky-300 transition-all duration-300 text-center"
+                  whileHover={{ y: -8 }}
+                  className="group relative z-10 bg-white border border-sky-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:shadow-sky-500/15 hover:border-sky-300 transition-all duration-500 text-center"
                 >
-                  {/* Number badge */}
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-sky-600 text-white text-sm font-bold flex items-center justify-center shadow-md ring-4 ring-sky-50">
-                    {i + 1}
-                  </span>
+                  {/* Image */}
+                  <div className="relative w-full h-32 sm:h-36 overflow-hidden">
+                    <img
+                      src={step.image}
+                      alt={step.title}
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/10 to-transparent" />
+                    <div className="absolute inset-0 bg-sky-600/0 group-hover:bg-sky-600/20 transition-colors duration-500" />
+                  </div>
 
-                  <motion.div
-                    whileHover={{ rotate: 6, scale: 1.08 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className="w-14 h-14 mx-auto bg-sky-50 border border-sky-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-sky-100 transition-colors"
-                  >
-                    <Icon size={24} className="text-sky-600" />
-                  </motion.div>
+                  {/* Number + Icon badge (overlaps image) */}
+                  <div className="relative -mt-7 flex justify-center">
+                    <motion.div
+                      whileHover={{ rotate: 6, scale: 1.08 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      className="relative w-14 h-14 bg-sky-600 rounded-xl flex items-center justify-center shadow-lg shadow-sky-600/30 border-4 border-white"
+                    >
+                      <Icon size={22} className="text-white" />
+                      <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-white text-sky-700 text-xs font-bold flex items-center justify-center shadow-md ring-2 ring-sky-100">
+                        {i + 1}
+                      </span>
+                    </motion.div>
+                  </div>
 
-                  <h3 className="text-base sm:text-lg font-semibold text-slate-900 mb-2 leading-snug">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    {step.desc}
-                  </p>
+                  <div className="px-5 pt-3 pb-6">
+                    <h3 className="text-base sm:text-lg font-semibold text-slate-900 mb-2 leading-snug">
+                      {step.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      {step.desc}
+                    </p>
+                  </div>
+
+                  <span className="absolute bottom-0 left-0 h-1 w-full bg-sky-500 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
                 </motion.div>
               );
             })}

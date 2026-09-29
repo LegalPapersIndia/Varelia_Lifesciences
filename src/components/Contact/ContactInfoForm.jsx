@@ -372,18 +372,27 @@ const ContactInfoForm = () => {
                   </>
                 ),
               },
-              {
-                icon: <Phone size={18} />,
-                label: "Mobile",
-                value: (
-                  <a
-                    href="tel:+919760222668"
-                    className="hover:text-sky-400 transition-colors duration-300"
-                  >
-                    +91 97602 22668
-                  </a>
-                ),
-              },
+             {
+  icon: <Phone size={18} />,
+  label: "Mobile",
+  value: (
+    <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+      <a
+        href="tel:+919027864296"
+        className="hover:text-sky-400 transition-colors duration-300"
+      >
+        +91 90278 64296
+      </a>
+      <span className="text-slate-600">•</span>
+      <a
+        href="tel:+919997422668"
+        className="hover:text-sky-400 transition-colors duration-300"
+      >
+        +91 99974 22668
+      </a>
+    </div>
+  ),
+},
             ].map((item, index) => (
               <motion.div
                 key={index}
