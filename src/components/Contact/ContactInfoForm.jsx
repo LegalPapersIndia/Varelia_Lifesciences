@@ -204,22 +204,33 @@
 
 // export default ContactInfoForm;
 
-
-
-
-
-
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Mail, Phone, MessageCircle, Facebook, Instagram, Linkedin } from "lucide-react";
+import {
+  MapPin,
+  Mail,
+  Phone,
+  MessageCircle,
+  Facebook,
+  Instagram,
+  Linkedin,
+} from "lucide-react";
 
 // Client's WhatsApp number
 const WHATSAPP_NUMBER = "919027864296";
 
 // PLACEHOLDER — replace with real social links once client provides them
 const SOCIAL_LINKS = [
-  { icon: <Facebook size={16} />, url: "https://www.facebook.com/profile.php?id=61594758389870", label: "Facebook" },
-  { icon: <Instagram size={16} />, url: "https://www.instagram.com/varelialifesciences/", label: "Instagram" },
+  {
+    icon: <Facebook size={16} />,
+    url: "https://www.facebook.com/profile.php?id=61594758389870",
+    label: "Facebook",
+  },
+  {
+    icon: <Instagram size={16} />,
+    url: "https://www.instagram.com/varelialifesciences/",
+    label: "Instagram",
+  },
   // { icon: <Linkedin size={16} />, url: "#", label: "LinkedIn" },
 ];
 
@@ -256,7 +267,12 @@ const ContactInfoForm = () => {
   const fields = [
     { name: "name", type: "text", placeholder: "Your Name", required: true },
     { name: "email", type: "email", placeholder: "Your Email", required: true },
-    { name: "phone", type: "tel", placeholder: "Phone Number", required: false },
+    {
+      name: "phone",
+      type: "tel",
+      placeholder: "Phone Number",
+      required: false,
+    },
   ];
 
   return (
@@ -273,8 +289,7 @@ const ContactInfoForm = () => {
             Send a Message
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            We'd Love to Hear{" "}
-            <span className="text-sky-600">From You</span>
+            We'd Love to Hear <span className="text-sky-600">From You</span>
           </h2>
           <p className="text-slate-600 text-sm sm:text-base mb-8">
             Fill the form and we'll get back to you on WhatsApp right away.
@@ -372,27 +387,27 @@ const ContactInfoForm = () => {
                   </>
                 ),
               },
-             {
-  icon: <Phone size={18} />,
-  label: "Mobile",
-  value: (
-    <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-      <a
-        href="tel:+919027864296"
-        className="hover:text-sky-400 transition-colors duration-300"
-      >
-        +91 90278 64296
-      </a>
-      <span className="text-slate-600">•</span>
-      <a
-        href="tel:+919997422668"
-        className="hover:text-sky-400 transition-colors duration-300"
-      >
-        +91 99974 22668
-      </a>
-    </div>
-  ),
-},
+              {
+                icon: <Phone size={18} />,
+                label: "Mobile",
+                value: (
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <a
+                      href="tel:+919027864296"
+                      className="hover:text-sky-400 transition-colors duration-300"
+                    >
+                      +91 90278 64296
+                    </a>
+                    <span className="text-slate-600">•</span>
+                    <a
+                      href="tel:+919997422668"
+                      className="hover:text-sky-400 transition-colors duration-300"
+                    >
+                      +91 99974 22668
+                    </a>
+                  </div>
+                ),
+              },
             ].map((item, index) => (
               <motion.div
                 key={index}
