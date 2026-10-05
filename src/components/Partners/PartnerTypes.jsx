@@ -119,13 +119,13 @@
 
 
 
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; 
 import { Truck, Ship, Factory, ArrowRight } from "lucide-react";
 import partnerImg from "../../assets/Partner.jpg";
 import importExportImg from "../../assets/Import-Export.jpg";
 import manufacturingImg from "../../assets/Manufacturing.jpg";
 
-// `value` form ke Business Type dropdown se match hona chahiye (form wali file mein same rakhenge)
+
 const partners = [
   {
     icon: Truck,

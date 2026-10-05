@@ -14,18 +14,18 @@ import WhatWeDo from "../components/Home/WhatWeDo";
 const Home = () => {
   return (
     <>
-    <Hero />
-    <QuickFactsStrip />
-    <WhatWeDo />
-{/* <CertificationsStrip /> */}
-<AboutSnapshot />
-<StatsCounter />
-<HowWeWork />
-<WhyChooseUs />
-<ProductHighlights />
-<FranchiseCTA />
-<FaqAccordion />
-<CTASection />
+      <Hero />
+      <QuickFactsStrip />
+      <WhatWeDo />
+      {/* <CertificationsStrip /> */}
+      <AboutSnapshot />
+      <StatsCounter />
+      <HowWeWork />
+      <WhyChooseUs />
+      <ProductHighlights />
+      <FranchiseCTA />
+      <FaqAccordion />
+      <CTASection />
     </>
   );
 };

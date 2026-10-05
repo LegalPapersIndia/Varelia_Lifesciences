@@ -1,6 +1,3 @@
-
-
-
 // import { Link } from "react-router-dom";
 // import { motion } from "framer-motion";
 // import { Facebook, Instagram, Linkedin, MapPin, Mail, Phone, Globe } from "lucide-react";
@@ -171,9 +168,6 @@
 //     </footer>
 //   );
 // }
-
-
-
 
 // import { Link } from "react-router-dom";
 // import { motion } from "framer-motion";
@@ -361,11 +355,17 @@
 // }
 
 
-
-
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Facebook, Instagram, Linkedin, MapPin, Mail, Phone, Globe } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  MapPin,
+  Mail,
+  Phone,
+  Globe,
+} from "lucide-react";
 import logo from "../assets/logo.png";
 
 const NAV_LINKS = [
@@ -381,8 +381,16 @@ const NAV_LINKS = [
 
 // PLACEHOLDER — replace with real social links once client provides them
 const SOCIAL_LINKS = [
-  { icon: <Facebook size={16} />, url: "https://www.facebook.com/profile.php?id=61594758389870", label: "Facebook" },
-  { icon: <Instagram size={16} />, url: "https://www.instagram.com/varelialifesciences/", label: "Instagram" },
+  {
+    icon: <Facebook size={16} />,
+    url: "https://www.facebook.com/profile.php?id=61594758389870",
+    label: "Facebook",
+  },
+  {
+    icon: <Instagram size={16} />,
+    url: "https://www.instagram.com/varelialifesciences/",
+    label: "Instagram",
+  },
   // { icon: <Linkedin size={16} />, url: "#", label: "LinkedIn" },
 ];
 
@@ -412,9 +420,9 @@ export default function Footer() {
               </h3>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed max-w-xs">
-              A trusted pharmaceutical merchant exporter and domestic
-              supplier, delivering quality-assured medicines across India
-              and international markets.
+              A trusted pharmaceutical merchant exporter and domestic supplier,
+              delivering quality-assured medicines across India and
+              international markets.
             </p>
           </motion.div>
 
@@ -477,24 +485,24 @@ export default function Footer() {
                   </a>
                 </div>
               </li>
-             <li className="flex items-start gap-3">
-  <Phone size={16} className="text-sky-400 mt-0.5 shrink-0" />
-  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-    <a
-      href="tel:+919027864296"
-      className="text-sm text-slate-400 hover:text-sky-400 transition-colors duration-300"
-    >
-      +91 90278 64296
-    </a>
-    <span className="text-slate-600">•</span>
-    <a
-      href="tel:+919997422668"
-      className="text-sm text-slate-400 hover:text-sky-400 transition-colors duration-300"
-    >
-      +91 99974 22668
-    </a>
-  </div>
-</li>
+              <li className="flex items-start gap-3">
+                <Phone size={16} className="text-sky-400 mt-0.5 shrink-0" />
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                  <a
+                    href="tel:+919027864296"
+                    className="text-sm text-slate-400 hover:text-sky-400 transition-colors duration-300"
+                  >
+                    +91 90278 64296
+                  </a>
+                  <span className="text-slate-600">•</span>
+                  <a
+                    href="tel:+919997422668"
+                    className="text-sm text-slate-400 hover:text-sky-400 transition-colors duration-300"
+                  >
+                    +91 94104 09450
+                  </a>
+                </div>
+              </li>
             </ul>
           </motion.div>
 
@@ -542,7 +550,9 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>© {year} Varelia Lifesciences Pvt. Ltd. All rights reserved.</p>
-          <p>Products manufactured under license by third-party manufacturers.</p>
+          <p>
+            Products manufactured under license by third-party manufacturers.
+          </p>
           <p>
             Developed By{" "}
             <a

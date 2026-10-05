@@ -394,7 +394,7 @@ import {
 import franchiseSideImg from "../../assets/franchise-side1.png";
 
 // Client's WhatsApp number
-const WHATSAPP_NUMBER = "919760222668";
+const WHATSAPP_NUMBER = "919410409450";
 
 const highlights = [
   "Qualified Manufacturing Partners",

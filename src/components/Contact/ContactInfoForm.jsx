@@ -217,7 +217,7 @@ import {
 } from "lucide-react";
 
 // Client's WhatsApp number
-const WHATSAPP_NUMBER = "919027864296";
+const WHATSAPP_NUMBER = "919410409450";
 
 // PLACEHOLDER — replace with real social links once client provides them
 const SOCIAL_LINKS = [
@@ -403,7 +403,7 @@ const ContactInfoForm = () => {
                       href="tel:+919997422668"
                       className="hover:text-sky-400 transition-colors duration-300"
                     >
-                      +91 99974 22668
+                      +91 94104 09450
                     </a>
                   </div>
                 ),
