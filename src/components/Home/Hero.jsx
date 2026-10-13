@@ -338,7 +338,7 @@ import {
   Globe2,
   Factory,
 } from "lucide-react";
-import heroImage from "../../assets/hero.png";
+import heroImage from "../../assets/hero1.png";
 
 const ctaStrip = [
   { icon: Handshake, label: "Qualified Manufacturing Partners" },
