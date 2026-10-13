@@ -10,6 +10,7 @@ import HowWeWork from "../components/Home/HowWeWork";
 import QuickFactsStrip from "../components/Home/QuickFactsStrip";
 import WhatWeDo from "../components/Home/WhatWeDo";
 import PartnersCTA from "../components/Home/PartnersCTA";
+import KeyExportMarkets from "../components/Home/KeyExportMarkets";
 
 const Home = () => {
   return (
@@ -23,6 +24,7 @@ const Home = () => {
       <HowWeWork />
       <WhyChooseUs />
       <ProductHighlights />
+   <KeyExportMarkets />
         <PartnersCTA />
       
       <FaqAccordion />
