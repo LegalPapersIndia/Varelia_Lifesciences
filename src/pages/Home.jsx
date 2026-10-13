@@ -2,7 +2,6 @@ import Hero from "../components/Home/Hero";
 import WhyChooseUs from "../components/Home/WhyChooseUs";
 import ProductHighlights from "../components/Home/ProductHighlights";
 import AboutSnapshot from "../components/Home/AboutSnapshot";
-import FranchiseCTA from "../components/Home/FranchiseCTA";
 import CTASection from "../components/Home/CTASection";
 import FaqAccordion from "../components/Home/FaqAccordion";
 import StatsCounter from "../components/Home/StatsCounter";
@@ -10,12 +9,13 @@ import StatsCounter from "../components/Home/StatsCounter";
 import HowWeWork from "../components/Home/HowWeWork";
 import QuickFactsStrip from "../components/Home/QuickFactsStrip";
 import WhatWeDo from "../components/Home/WhatWeDo";
+import PartnersCTA from "../components/Home/PartnersCTA";
 
 const Home = () => {
   return (
     <>
       <Hero />
-      <QuickFactsStrip />
+      {/* <QuickFactsStrip /> */}
       <WhatWeDo />
       {/* <CertificationsStrip /> */}
       <AboutSnapshot />
@@ -23,7 +23,8 @@ const Home = () => {
       <HowWeWork />
       <WhyChooseUs />
       <ProductHighlights />
-      <FranchiseCTA />
+        <PartnersCTA />
+      
       <FaqAccordion />
       <CTASection />
     </>

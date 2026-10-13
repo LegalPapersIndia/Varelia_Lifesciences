@@ -1,169 +1,61 @@
-// import { useState } from "react";
-// import { motion } from "framer-motion";
-// import { MessageCircle, User, Building2, MapPin, Phone } from "lucide-react";
 
-// // Client's WhatsApp number
-// const WHATSAPP_NUMBER = "919027864296";
 
-// const FranchiseForm = () => {
-//   const [formData, setFormData] = useState({
-//     name: "",
-//     company: "",
-//     area: "",
-//     phone: "",
-//     message: "",
-//   });
-//   const [loading, setLoading] = useState(false);
-//   const [status, setStatus] = useState("");
-
-//   const handleChange = (e) => {
-//     setFormData({ ...formData, [e.target.name]: e.target.value });
-//   };
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     setLoading(true);
-//     setStatus("");
-
-//     const text = `New Franchise Enquiry:%0A%0AName: ${formData.name}%0ACompany/Firm: ${formData.company}%0AInterested Area/Location: ${formData.area}%0APhone: ${formData.phone}%0AMessage: ${formData.message}`;
-//     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
-
-//     setTimeout(() => {
-//       setLoading(false);
-//       setStatus("Redirecting you to WhatsApp...");
-//       window.open(whatsappUrl, "_blank");
-//       setFormData({ name: "", company: "", area: "", phone: "", message: "" });
-//     }, 600);
-//   };
-
-//   const fields = [
-//     { name: "name", type: "text", placeholder: "Your Name", icon: User, required: true },
-//     { name: "company", type: "text", placeholder: "Company / Firm Name", icon: Building2, required: false },
-//     { name: "area", type: "text", placeholder: "Interested Area / Location", icon: MapPin, required: true },
-//     { name: "phone", type: "tel", placeholder: "Phone Number", icon: Phone, required: true },
-//   ];
-
-//   return (
-//     <section className="py-16 sm:py-20 bg-sky-50/50">
-//       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-//         <motion.div
-//           initial={{ opacity: 0, y: 20 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           viewport={{ once: true, amount: 0.3 }}
-//           transition={{ duration: 0.6 }}
-//           className="text-center mb-10"
-//         >
-//           <span className="inline-block bg-sky-100 text-sky-700 text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
-//             Apply Now
-//           </span>
-//           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">
-//             Franchise <span className="text-sky-600 italic">Enquiry</span>
-//           </h2>
-//           <p className="text-slate-600 text-sm sm:text-base mt-3">
-//             Fill in your details and we'll connect with you on WhatsApp.
-//           </p>
-//         </motion.div>
-
-//         <motion.div
-//           initial={{ opacity: 0, y: 20 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           viewport={{ once: true, amount: 0.3 }}
-//           transition={{ duration: 0.6, delay: 0.1 }}
-//           className="bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-sky-100"
-//         >
-//           <form onSubmit={handleSubmit} className="space-y-4">
-//             {fields.map((field) => {
-//               const Icon = field.icon;
-//               return (
-//                 <div key={field.name} className="relative">
-//                   <Icon
-//                     size={18}
-//                     className="absolute left-4 top-1/2 -translate-y-1/2 text-sky-400"
-//                   />
-//                   <input
-//                     type={field.type}
-//                     name={field.name}
-//                     placeholder={field.placeholder}
-//                     value={formData[field.name]}
-//                     onChange={handleChange}
-//                     required={field.required}
-//                     className="w-full bg-sky-50/50 border border-sky-100 pl-11 pr-4 py-3 rounded-xl focus:ring-2 focus:ring-sky-400/30 focus:border-sky-400 outline-none text-slate-900 placeholder-slate-400 transition-all duration-300"
-//                   />
-//                 </div>
-//               );
-//             })}
-
-//             <textarea
-//               rows="4"
-//               name="message"
-//               placeholder="Tell us about yourself / your business experience"
-//               value={formData.message}
-//               onChange={handleChange}
-//               className="w-full bg-sky-50/50 border border-sky-100 px-4 py-3 rounded-xl resize-none focus:ring-2 focus:ring-sky-400/30 focus:border-sky-400 outline-none text-slate-900 placeholder-slate-400 transition-all duration-300"
-//             />
-
-//             <motion.button
-//               whileHover={{ scale: 1.02 }}
-//               whileTap={{ scale: 0.98 }}
-//               type="submit"
-//               disabled={loading}
-//               className={`w-full bg-sky-600 hover:bg-sky-700 text-white py-3.5 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all duration-300 ${
-//                 loading ? "opacity-70 cursor-not-allowed" : ""
-//               }`}
-//             >
-//               <MessageCircle size={18} />
-//               {loading ? "Redirecting..." : "Apply via WhatsApp"}
-//             </motion.button>
-
-//             {status && (
-//               <motion.p
-//                 initial={{ opacity: 0 }}
-//                 animate={{ opacity: 1 }}
-//                 className="text-sky-600 text-sm text-center"
-//               >
-//                 {status}
-//               </motion.p>
-//             )}
-//           </form>
-//         </motion.div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default FranchiseForm;
-
-// import { useState } from "react";
+// import { useState, useEffect } from "react";
 // import { motion } from "framer-motion";
 // import {
 //   MessageCircle,
 //   User,
 //   Building2,
-//   MapPin,
 //   Phone,
+//   Globe2,
+//   Briefcase,
+//   Package,
+//   Hash,
+//   ChevronDown,
 //   CheckCircle2,
 // } from "lucide-react";
 // import franchiseSideImg from "../../assets/franchise-side1.png";
 
 // // Client's WhatsApp number
-// const WHATSAPP_NUMBER = "919760222668";
+// const WHATSAPP_NUMBER = "919410409450";
 
 // const highlights = [
-//   "Complete Business Support",
-//   "Genuine Quality Products",
-//   "Transparent Pricing",
+//   "Qualified Manufacturing Partners",
+//   "Quality Documentation, as applicable",
+//   "Transparent Communication",
 // ];
 
-// const FranchiseForm = () => {
-//   const [formData, setFormData] = useState({
-//     name: "",
-//     company: "",
-//     area: "",
-//     phone: "",
-//     message: "",
-//   });
+// // Pehle 3 options PartnerTypes ke cards ke `value` se match hone chahiye ye business
+// const businessTypes = [
+//   "Distribution Partner",
+//   "Import / Export Partner",
+//   "Manufacturing Partner",
+//   "Hospital / Institution",
+//   "Other",
+// ];
+
+// const initialData = {
+//   name: "",
+//   company: "",
+//   phone: "",
+//   location: "",
+//   businessType: "",
+//   product: "",
+//   quantity: "",
+//   message: "",
+// };
+
+// const FranchiseForm = ({ partnerType }) => {
+//   const [formData, setFormData] = useState(initialData);
 //   const [loading, setLoading] = useState(false);
 //   const [status, setStatus] = useState("");
+
+//   // Partner card se aaye toh Business Type pre-select ho jaye
+//   useEffect(() => {
+//     if (partnerType) {
+//       setFormData((prev) => ({ ...prev, businessType: partnerType }));
+//     }
+//   }, [partnerType]);
 
 //   const handleChange = (e) => {
 //     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -174,50 +66,72 @@
 //     setLoading(true);
 //     setStatus("");
 
-//     const text = `New Franchise Enquiry:%0A%0AName: ${formData.name}%0ACompany/Firm: ${formData.company}%0AInterested Area/Location: ${formData.area}%0APhone: ${formData.phone}%0AMessage: ${formData.message}`;
-//     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+//     const text = [
+//       "New Partnership Enquiry:",
+//       "",
+//       `Name: ${formData.name}`,
+//       `Company: ${formData.company}`,
+//       `Phone: ${formData.phone}`,
+//       `Country / City: ${formData.location}`,
+//       `Business Type: ${formData.businessType}`,
+//       `Product & Pack Size: ${formData.product}`,
+//       `Required Quantity: ${formData.quantity}`,
+//       `Message: ${formData.message}`,
+//     ].join("\n");
+
+//     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+//       text
+//     )}`;
 
 //     setTimeout(() => {
 //       setLoading(false);
 //       setStatus("Redirecting you to WhatsApp...");
 //       window.open(whatsappUrl, "_blank");
-//       setFormData({ name: "", company: "", area: "", phone: "", message: "" });
+//       setFormData(initialData);
 //     }, 600);
 //   };
 
-//   const fields = [
-//     {
-//       name: "name",
-//       type: "text",
-//       placeholder: "Your Name",
-//       icon: User,
-//       required: true,
-//     },
-//     {
-//       name: "company",
-//       type: "text",
-//       placeholder: "Company / Firm Name",
-//       icon: Building2,
-//       required: false,
-//     },
-//     {
-//       name: "area",
-//       type: "text",
-//       placeholder: "Interested Area / Location",
-//       icon: MapPin,
-//       required: true,
-//     },
-//     {
-//       name: "phone",
-//       type: "tel",
-//       placeholder: "Phone Number",
-//       icon: Phone,
-//       required: true,
-//     },
+//   const inputClass =
+//     "w-full bg-sky-50/50 border border-sky-100 pl-11 pr-4 py-3 rounded-xl focus:ring-2 focus:ring-sky-400/30 focus:border-sky-400 outline-none text-slate-900 placeholder-slate-400 transition-all duration-300";
+
+//   const textFields = [
+//     { name: "name", type: "text", placeholder: "Your Name", icon: User, required: true },
+//     { name: "company", type: "text", placeholder: "Company Name", icon: Building2, required: true },
+//     { name: "phone", type: "tel", placeholder: "Phone / WhatsApp", icon: Phone, required: true },
+//     { name: "location", type: "text", placeholder: "Country / City", icon: Globe2, required: true },
 //   ];
 
+//   const detailFields = [
+//     { name: "product", type: "text", placeholder: "Product & Pack Size", icon: Package, required: false },
+//     { name: "quantity", type: "text", placeholder: "Required Quantity", icon: Hash, required: false },
+//   ];
+
+//   const renderInput = (field) => {
+//     const Icon = field.icon;
+//     return (
+//       <div key={field.name} className="relative">
+//         <Icon
+//           size={18}
+//           className="absolute left-4 top-1/2 -translate-y-1/2 text-sky-400"
+//         />
+//         <input
+//           type={field.type}
+//           name={field.name}
+//           placeholder={field.placeholder}
+//           value={formData[field.name]}
+//           onChange={handleChange}
+//           required={field.required}
+//           className={inputClass}
+//         />
+//       </div>
+//     );
+//   };
+
 //   return (
-//     <section className="py-16 sm:py-20 bg-sky-50/50 overflow-hidden">
+//     <section
+//       id="enquiry"
+//       className="py-16 sm:py-20 bg-sky-50/50 overflow-hidden scroll-mt-24"
+//     >
 //       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 //         <motion.div
 //           initial={{ opacity: 0, y: 20 }}
@@ -227,13 +141,14 @@
 //           className="text-center mb-12"
 //         >
 //           <span className="inline-block bg-sky-100 text-sky-700 text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
-//             Apply Now
+//             Partner Enquiry
 //           </span>
 //           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">
-//             Franchise <span className="text-sky-600 italic">Enquiry</span>
+//             Send Your <span className="text-sky-600 italic">Enquiry</span>
 //           </h2>
 //           <p className="text-slate-600 text-sm sm:text-base mt-3 max-w-xl mx-auto">
-//             Fill in your details and we'll connect with you on WhatsApp.
+//             Tell us what you need. Domestic, export or partnership, our team
+//             will connect with you on WhatsApp.
 //           </p>
 //         </motion.div>
 
@@ -262,7 +177,7 @@
 //               />
 //               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent" />
 
-//               {/* Stat badge — inside image, top corner, no overlap */}
+//               {/* Badge — inside image, top corner */}
 //               <motion.div
 //                 initial={{ opacity: 0, y: -10 }}
 //                 whileInView={{ opacity: 1, y: 0 }}
@@ -271,14 +186,14 @@
 //                 className="absolute top-4 right-4 sm:top-5 sm:right-5 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg px-4 py-3 flex items-center gap-2.5"
 //               >
 //                 <div className="w-9 h-9 bg-sky-500/10 border border-sky-500/20 rounded-lg flex items-center justify-center shrink-0">
-//                   <Building2 size={17} className="text-sky-600" />
+//                   <Globe2 size={17} className="text-sky-600" />
 //                 </div>
 //                 <div>
 //                   <p className="text-sm font-bold text-slate-900 leading-none">
-//                     500+ Partners
+//                     India + Global
 //                   </p>
 //                   <p className="text-[11px] text-slate-500 mt-1">
-//                     Trust our model
+//                     Partnership enquiries
 //                   </p>
 //                 </div>
 //               </motion.div>
@@ -313,31 +228,50 @@
 //             className="bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-sky-100 order-1 lg:order-2 flex flex-col justify-center"
 //           >
 //             <form onSubmit={handleSubmit} className="space-y-4">
-//               {fields.map((field) => {
-//                 const Icon = field.icon;
-//                 return (
-//                   <div key={field.name} className="relative">
-//                     <Icon
-//                       size={18}
-//                       className="absolute left-4 top-1/2 -translate-y-1/2 text-sky-400"
-//                     />
-//                     <input
-//                       type={field.type}
-//                       name={field.name}
-//                       placeholder={field.placeholder}
-//                       value={formData[field.name]}
-//                       onChange={handleChange}
-//                       required={field.required}
-//                       className="w-full bg-sky-50/50 border border-sky-100 pl-11 pr-4 py-3 rounded-xl focus:ring-2 focus:ring-sky-400/30 focus:border-sky-400 outline-none text-slate-900 placeholder-slate-400 transition-all duration-300"
-//                     />
-//                   </div>
-//                 );
-//               })}
+//               {/* Name / Company / Phone / Location */}
+//               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+//                 {textFields.map(renderInput)}
+//               </div>
+
+//               {/* Business Type */}
+//               <div className="relative">
+//                 <Briefcase
+//                   size={18}
+//                   className="absolute left-4 top-1/2 -translate-y-1/2 text-sky-400 pointer-events-none"
+//                 />
+//                 <select
+//                   name="businessType"
+//                   value={formData.businessType}
+//                   onChange={handleChange}
+//                   required
+//                   className={`${inputClass} appearance-none pr-10 ${
+//                     formData.businessType ? "text-slate-900" : "text-slate-400"
+//                   }`}
+//                 >
+//                   <option value="" disabled>
+//                     Business Type
+//                   </option>
+//                   {businessTypes.map((type) => (
+//                     <option key={type} value={type} className="text-slate-900">
+//                       {type}
+//                     </option>
+//                   ))}
+//                 </select>
+//                 <ChevronDown
+//                   size={18}
+//                   className="absolute right-4 top-1/2 -translate-y-1/2 text-sky-400 pointer-events-none"
+//                 />
+//               </div>
+
+//               {/* Product / Quantity */}
+//               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+//                 {detailFields.map(renderInput)}
+//               </div>
 
 //               <textarea
-//                 rows="4"
+//                 rows="3"
 //                 name="message"
-//                 placeholder="Tell us about yourself / your business experience"
+//                 placeholder="Message (optional)"
 //                 value={formData.message}
 //                 onChange={handleChange}
 //                 className="w-full bg-sky-50/50 border border-sky-100 px-4 py-3 rounded-xl resize-none focus:ring-2 focus:ring-sky-400/30 focus:border-sky-400 outline-none text-slate-900 placeholder-slate-400 transition-all duration-300"
@@ -353,7 +287,7 @@
 //                 }`}
 //               >
 //                 <MessageCircle size={18} />
-//                 {loading ? "Redirecting..." : "Apply via WhatsApp"}
+//                 {loading ? "Redirecting..." : "Send Enquiry via WhatsApp"}
 //               </motion.button>
 
 //               {status && (
@@ -384,17 +318,19 @@ import {
   User,
   Building2,
   Phone,
+  Mail,
   Globe2,
   Briefcase,
   Package,
+  Factory,
+  FileCheck,
   Hash,
   ChevronDown,
   CheckCircle2,
+  Info,
 } from "lucide-react";
 import franchiseSideImg from "../../assets/franchise-side1.png";
-
-// Client's WhatsApp number
-const WHATSAPP_NUMBER = "919410409450";
+import { WHATSAPP_NUMBER } from "../../data/siteConfig";
 
 const highlights = [
   "Qualified Manufacturing Partners",
@@ -402,7 +338,6 @@ const highlights = [
   "Transparent Communication",
 ];
 
-// Pehle 3 options PartnerTypes ke cards ke `value` se match hone chahiye
 const businessTypes = [
   "Distribution Partner",
   "Import / Export Partner",
@@ -414,11 +349,13 @@ const businessTypes = [
 const initialData = {
   name: "",
   company: "",
+  email: "",
   phone: "",
   location: "",
   businessType: "",
   product: "",
   quantity: "",
+  certifications: "",
   message: "",
 };
 
@@ -427,12 +364,14 @@ const FranchiseForm = ({ partnerType }) => {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
 
-  // Partner card se aaye toh Business Type pre-select ho jaye
+  // Partner card se aaya type form mein set karo
   useEffect(() => {
     if (partnerType) {
       setFormData((prev) => ({ ...prev, businessType: partnerType }));
     }
   }, [partnerType]);
+
+  const isManufacturer = formData.businessType === "Manufacturing Partner";
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -443,21 +382,34 @@ const FranchiseForm = ({ partnerType }) => {
     setLoading(true);
     setStatus("");
 
-    const text = [
+    const lines = [
       "New Partnership Enquiry:",
       "",
       `Name: ${formData.name}`,
       `Company: ${formData.company}`,
+      `Email: ${formData.email}`,
       `Phone: ${formData.phone}`,
       `Country / City: ${formData.location}`,
       `Business Type: ${formData.businessType}`,
-      `Product & Pack Size: ${formData.product}`,
-      `Required Quantity: ${formData.quantity}`,
-      `Message: ${formData.message}`,
-    ].join("\n");
+    ];
+
+    if (isManufacturer) {
+      lines.push(
+        `Products Manufactured: ${formData.product || "-"}`,
+        `Licences & Certifications: ${formData.certifications || "-"}`,
+        `Production Capacity: ${formData.quantity || "-"}`
+      );
+    } else {
+      lines.push(
+        `Product & Pack Size: ${formData.product || "-"}`,
+        `Required Quantity: ${formData.quantity || "-"}`
+      );
+    }
+
+    lines.push(`Message: ${formData.message || "-"}`);
 
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-      text
+      lines.join("\n")
     )}`;
 
     setTimeout(() => {
@@ -474,14 +426,44 @@ const FranchiseForm = ({ partnerType }) => {
   const textFields = [
     { name: "name", type: "text", placeholder: "Your Name", icon: User, required: true },
     { name: "company", type: "text", placeholder: "Company Name", icon: Building2, required: true },
+    { name: "email", type: "email", placeholder: "Business Email", icon: Mail, required: true },
     { name: "phone", type: "tel", placeholder: "Phone / WhatsApp", icon: Phone, required: true },
-    { name: "location", type: "text", placeholder: "Country / City", icon: Globe2, required: true },
   ];
 
-  const detailFields = [
-    { name: "product", type: "text", placeholder: "Product & Pack Size", icon: Package, required: false },
-    { name: "quantity", type: "text", placeholder: "Required Quantity", icon: Hash, required: false },
-  ];
+  // Fields change according to partner type
+  const detailFields = isManufacturer
+    ? [
+        {
+          name: "product",
+          type: "text",
+          placeholder: "Products You Manufacture",
+          icon: Factory,
+          required: true,
+        },
+        {
+          name: "quantity",
+          type: "text",
+          placeholder: "Production Capacity (optional)",
+          icon: Hash,
+          required: false,
+        },
+      ]
+    : [
+        {
+          name: "product",
+          type: "text",
+          placeholder: "Product & Pack Size",
+          icon: Package,
+          required: false,
+        },
+        {
+          name: "quantity",
+          type: "text",
+          placeholder: "Required Quantity",
+          icon: Hash,
+          required: false,
+        },
+      ];
 
   const renderInput = (field) => {
     const Icon = field.icon;
@@ -524,8 +506,8 @@ const FranchiseForm = ({ partnerType }) => {
             Send Your <span className="text-sky-600 italic">Enquiry</span>
           </h2>
           <p className="text-slate-600 text-sm sm:text-base mt-3 max-w-xl mx-auto">
-            Tell us what you need. Domestic, export or partnership, our team
-            will connect with you on WhatsApp.
+            Tell us about your business and what you are looking for. Our team
+            will review your enquiry and connect with you.
           </p>
         </motion.div>
 
@@ -605,10 +587,19 @@ const FranchiseForm = ({ partnerType }) => {
             className="bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-sky-100 order-1 lg:order-2 flex flex-col justify-center"
           >
             <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Name / Company / Phone / Location */}
+              {/* Name / Company / Email / Phone */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {textFields.map(renderInput)}
               </div>
+
+              {/* Country / City */}
+              {renderInput({
+                name: "location",
+                type: "text",
+                placeholder: "Country / City",
+                icon: Globe2,
+                required: true,
+              })}
 
               {/* Business Type */}
               <div className="relative">
@@ -640,19 +631,44 @@ const FranchiseForm = ({ partnerType }) => {
                 />
               </div>
 
-              {/* Product / Quantity */}
+              {/* Product / Quantity (changes for manufacturers) */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {detailFields.map(renderInput)}
               </div>
 
+              {/* Certifications — only for manufacturing partners */}
+              {isManufacturer &&
+                renderInput({
+                  name: "certifications",
+                  type: "text",
+                  placeholder: "Licences & Certifications Held (e.g. mfg licence, GMP)",
+                  icon: FileCheck,
+                  required: false,
+                })}
+
               <textarea
                 rows="3"
                 name="message"
-                placeholder="Message (optional)"
+                placeholder={
+                  isManufacturer
+                    ? "Tell us about your facility and product range (optional)"
+                    : "Message (optional)"
+                }
                 value={formData.message}
                 onChange={handleChange}
                 className="w-full bg-sky-50/50 border border-sky-100 px-4 py-3 rounded-xl resize-none focus:ring-2 focus:ring-sky-400/30 focus:border-sky-400 outline-none text-slate-900 placeholder-slate-400 transition-all duration-300"
               />
+
+              {/* Notes */}
+              <div className="flex items-start gap-2 text-xs text-slate-500 leading-relaxed">
+                <Info size={14} className="shrink-0 mt-0.5 text-sky-600" />
+                <p>
+                  {isManufacturer
+                    ? "Please do not enter licence numbers or confidential documents here. Documents are requested during evaluation. "
+                    : "For B2B enquiries only. "}
+                  By submitting, you agree to be contacted about this enquiry.
+                </p>
+              </div>
 
               <motion.button
                 whileHover={{ scale: 1.02 }}

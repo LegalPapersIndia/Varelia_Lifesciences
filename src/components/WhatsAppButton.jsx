@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const WHATSAPP_NUMBER = "919760222668";
+const WHATSAPP_NUMBER = "919410409450";
 const DEFAULT_MESSAGE = "Hi, I'm interested in Varelia Lifesciences products.";
 
 const WhatsAppButton = () => {

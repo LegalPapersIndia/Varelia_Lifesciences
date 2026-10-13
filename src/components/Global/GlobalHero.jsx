@@ -1,9 +1,139 @@
+// import { motion } from "framer-motion";
+// import { Link } from "react-router-dom";
+// import { ChevronRight, Globe2 } from "lucide-react";
+// import globalBg from "../../assets/global.jpg";
+
+// const GlobalHero = () => {
+//   return (
+//     <section className="relative py-14 sm:py-20 overflow-hidden">
+//       {/* Background Image with slow zoom animation */}
+//       <motion.div
+//         initial={{ scale: 1.15, opacity: 0 }}
+//         animate={{ scale: 1, opacity: 1 }}
+//         transition={{ duration: 1.4, ease: "easeOut" }}
+//         className="absolute inset-0 w-full h-full"
+//       >
+//         <img
+//           src={globalBg}
+//           alt="Varelia Lifesciences Global Presence"
+//           className="w-full h-full object-cover"
+//         />
+//       </motion.div>
+
+//       {/* Light gradient overlay for readability */}
+//       <div className="absolute inset-0 bg-gradient-to-br from-sky-950/60 via-sky-800/40 to-sky-900/60" />
+//       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent" />
+
+//       {/* Decorative glowing orbs */}
+//       <motion.div
+//         animate={{ x: [0, 30, 0], y: [0, 20, 0] }}
+//         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+//         className="absolute -top-20 -left-20 w-96 h-96 bg-sky-400/20 rounded-full blur-3xl"
+//       />
+//       <motion.div
+//         animate={{ x: [0, -30, 0], y: [0, -20, 0] }}
+//         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+//         className="absolute bottom-0 right-0 w-[28rem] h-[28rem] bg-white/10 rounded-full blur-3xl"
+//       />
+
+//       {/* Subtle grid pattern */}
+//       <div
+//         className="absolute inset-0 opacity-[0.04]"
+//         style={{
+//           backgroundImage:
+//             "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
+//           backgroundSize: "48px 48px",
+//         }}
+//       />
+
+//       {/* Bottom fade to blend with next section */}
+//       <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-slate-900 to-transparent" />
+
+//       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+//         <motion.div
+//           initial={{ opacity: 0, y: 20 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.6 }}
+//         >
+//           <motion.div
+//             initial={{ opacity: 0, scale: 0.5, rotate: -15 }}
+//             animate={{ opacity: 1, scale: 1, rotate: 0 }}
+//             transition={{ duration: 0.6, delay: 0.1, type: "spring" }}
+//             whileHover={{ scale: 1.08, rotate: 3 }}
+//             className="w-14 h-14 mx-auto bg-white/10 border border-white/20 rounded-2xl flex items-center justify-center mb-5 backdrop-blur-md shadow-lg shadow-sky-900/30"
+//           >
+//             <Globe2 size={26} className="text-sky-200" />
+//           </motion.div>
+
+//           <motion.span
+//             initial={{ opacity: 0, y: -10 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             transition={{ delay: 0.2, duration: 0.5 }}
+//             className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-sky-100 text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full mb-5 backdrop-blur-md"
+//           >
+//             <motion.span
+//               animate={{ scale: [1, 1.4, 1], opacity: [1, 0.6, 1] }}
+//               transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+//               className="w-1.5 h-1.5 rounded-full bg-sky-300"
+//             />
+//             Global Presence
+//           </motion.span>
+
+//           <motion.h1
+//             initial={{ opacity: 0, y: 25 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.7, delay: 0.15 }}
+//             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4"
+//           >
+//             Connecting India With{" "}
+//             <span className="bg-gradient-to-r from-sky-200 via-white to-sky-200 bg-clip-text text-transparent italic">
+//               Global Healthcare Markets
+//             </span>
+//           </motion.h1>
+
+//           <motion.p
+//             initial={{ opacity: 0, y: 15 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.6, delay: 0.3 }}
+//             className="text-sky-50/90 text-sm sm:text-base max-w-2xl mx-auto mb-6"
+//           >
+//             Build a qualified network of importers, distributors and
+//             pharmaceutical partners across selected markets.
+//           </motion.p>
+
+//           {/* Breadcrumb */}
+//           <motion.div
+//             initial={{ opacity: 0, y: 10 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.5, delay: 0.4 }}
+//             className="flex items-center justify-center gap-2 text-sm text-sky-100/80 bg-white/5 border border-white/10 rounded-full px-5 py-2 w-fit mx-auto backdrop-blur-md"
+//           >
+//             <Link to="/" className="hover:text-white transition-colors">
+//               Home
+//             </Link>
+//             <ChevronRight size={14} />
+//             <span className="text-white font-medium">Global</span>
+//           </motion.div>
+//         </motion.div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default GlobalHero;
+
+
+
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ChevronRight, Globe2 } from "lucide-react";
+import { ChevronRight, Globe2, ArrowRight } from "lucide-react";
 import globalBg from "../../assets/global.jpg";
+import EnquiryModal from "../EnquiryModal";
 
 const GlobalHero = () => {
+  const [open, setOpen] = useState(false);
+
   return (
     <section className="relative py-14 sm:py-20 overflow-hidden">
       {/* Background Image with slow zoom animation */}
@@ -15,7 +145,7 @@ const GlobalHero = () => {
       >
         <img
           src={globalBg}
-          alt="Varelia Lifesciences Global Presence"
+          alt="Varelia Lifesciences export markets"
           className="w-full h-full object-cover"
         />
       </motion.div>
@@ -76,7 +206,7 @@ const GlobalHero = () => {
               transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
               className="w-1.5 h-1.5 rounded-full bg-sky-300"
             />
-            Global Presence
+            Export Markets
           </motion.span>
 
           <motion.h1
@@ -95,11 +225,32 @@ const GlobalHero = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-sky-50/90 text-sm sm:text-base max-w-2xl mx-auto mb-6"
+            className="text-sky-50/90 text-sm sm:text-base max-w-2xl mx-auto mb-7"
           >
-            Build a qualified network of importers, distributors and
-            pharmaceutical partners across selected markets.
+            Export coordination for importers, distributors and pharmaceutical
+            partners, with products sourced from India through qualified
+            manufacturing partners.
           </motion.p>
+
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.35 }}
+            className="mb-7"
+          >
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              className="group inline-flex items-center gap-2 bg-white text-sky-800 font-semibold px-7 py-3 rounded-full hover:bg-sky-50 hover:scale-105 transition-all duration-300 shadow-lg shadow-sky-950/30"
+            >
+              Request Export Quote
+              <ArrowRight
+                size={18}
+                className="group-hover:translate-x-1 transition-transform duration-300"
+              />
+            </button>
+          </motion.div>
 
           {/* Breadcrumb */}
           <motion.div
@@ -116,6 +267,15 @@ const GlobalHero = () => {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Export enquiry pop-up */}
+      <EnquiryModal
+        open={open}
+        onClose={() => setOpen(false)}
+        buyer="importer"
+        defaultRoute="export"
+        heading="Request Export Quote"
+      />
     </section>
   );
 };
