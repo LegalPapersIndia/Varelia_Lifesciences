@@ -176,7 +176,7 @@ import {
 } from "framer-motion";
 import { ArrowRight, Globe2, Info } from "lucide-react";
 
-import indiaImage from "../../assets/markets/india.png";
+import indiaImage from "../../assets/markets/India.png";
 import middleEastImage from "../../assets/markets/Middle-East.png";
 import africaImage from "../../assets/markets/Africa.png";
 import seAsiaImage from "../../assets/markets/SE-Asia.png";
