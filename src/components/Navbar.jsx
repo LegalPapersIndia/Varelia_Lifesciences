@@ -11,8 +11,8 @@
 //   { name: "Home", path: "/" },
 //   { name: "About", path: "/about" },
 //   { name: "Products", path: "/products" },
-//   { name: "Capabilities", path: "/capabilities" },
-//   { name: "Global", path: "/global" },
+// { name: "Services", path: "/services" },
+//   { name: "Global Markets", path: "/global " },
 //   { name: "Quality", path: "/quality" },
 //   { name: "Partners", path: "/partners" },
 //   { name: "Contact", path: "/contact" },
@@ -143,7 +143,7 @@
 //             to="/contact"
 //             className="inline-flex items-center bg-sky-600 text-white font-medium px-5 py-2.5 rounded-full hover:bg-sky-700 hover:scale-105 transition-all duration-300 shadow-md whitespace-nowrap"
 //           >
-//             Export Enquiry
+//             Request a Quote
 //           </Link>
 //         </div>
 
@@ -253,7 +253,7 @@
 //                 onClick={() => setIsOpen(false)}
 //                 className="flex-1 text-center bg-sky-600 text-white font-medium px-5 py-3 rounded-full hover:bg-sky-700 transition-colors"
 //               >
-//                 Export Enquiry
+//                 Request a Quote
 //               </Link>
 //             </motion.div>
 //           </motion.div>
@@ -264,7 +264,6 @@
 // };
 
 // export default Navbar;
-
 
 
 
@@ -279,8 +278,8 @@ const navLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Products", path: "/products" },
-{ name: "Services", path: "/services" },
-  { name: "Global Markets", path: "/global " },
+  { name: "Services", path: "/services" },
+  { name: "Global Markets", path: "/global" },
   { name: "Quality", path: "/quality" },
   { name: "Partners", path: "/partners" },
   { name: "Contact", path: "/contact" },
@@ -323,13 +322,18 @@ const Navbar = () => {
               scrolled ? "h-7" : "h-8"
             }`}
           />
-          <span
-            className={`font-bold tracking-tight transition-all duration-300 ${
-              scrolled ? "text-base" : "text-lg"
-            }`}
-          >
-            <span className="text-sky-600">Varelia</span>{" "}
-            <span className="text-slate-800">Lifesciences</span>
+          <span className="flex flex-col leading-tight">
+            <span
+              className={`font-bold tracking-tight transition-all duration-300 ${
+                scrolled ? "text-base" : "text-lg"
+              }`}
+            >
+              <span className="text-sky-600">Varelia</span>{" "}
+              <span className="text-slate-800">Lifesciences</span>
+            </span>
+            <span className="text-[10px] font-semibold tracking-[0.25em] uppercase text-black">
+  Pvt. Ltd.
+</span>
           </span>
         </Link>
 

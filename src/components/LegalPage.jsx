@@ -209,8 +209,9 @@ const LegalPage = ({ doc }) => {
                       <MapPin size={16} />
                     </span>
                     <p className="text-sm text-slate-300 leading-relaxed">
-                      Varelia Lifesciences Pvt. Ltd., 2nd Floor, Opposite Grand
-                      Square, Hapur Road, Meerut, Uttar Pradesh – 250002
+                      Varelia Lifesciences Pvt. Ltd., Building No. 1250, 2nd
+                      Floor, Opposite Grand Square, Hapur Road, Meerut, Uttar
+                      Pradesh – 250002
                     </p>
                   </div>
                 </div>

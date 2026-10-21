@@ -2,15 +2,7 @@
 
 // import { Link } from "react-router-dom";
 // import { motion } from "framer-motion";
-// import {
-//   Facebook,
-//   Instagram,
-//   Linkedin,
-//   MapPin,
-//   Mail,
-//   Phone,
-//   Globe,
-// } from "lucide-react";
+// import { Facebook, Instagram, MapPin, Mail, Phone } from "lucide-react";
 // import logo from "../assets/logo.png";
 
 // const NAV_LINKS = [
@@ -24,7 +16,12 @@
 //   { label: "Contact", path: "/contact" },
 // ];
 
-// // PLACEHOLDER — replace with real social links once client provides them
+// const LEGAL_LINKS = [
+//   { label: "Privacy Policy", path: "/privacy" },
+//   { label: "Terms & Conditions", path: "/terms" },
+//   { label: "Disclaimer", path: "/disclaimer" },
+// ];
+
 // const SOCIAL_LINKS = [
 //   {
 //     icon: <Facebook size={16} />,
@@ -36,7 +33,6 @@
 //     url: "https://www.instagram.com/varelialifesciences/",
 //     label: "Instagram",
 //   },
-//   // { icon: <Linkedin size={16} />, url: "#", label: "LinkedIn" },
 // ];
 
 // export default function Footer() {
@@ -65,9 +61,9 @@
 //               </h3>
 //             </div>
 //             <p className="text-sm text-slate-400 leading-relaxed max-w-xs">
-//               A trusted pharmaceutical merchant exporter and domestic supplier,
-//               delivering quality-assured medicines across India and
-//               international markets.
+//               A pharmaceutical merchant exporter and domestic supplier of IV
+//               fluids, sourcing from qualified manufacturing partners for buyers
+//               in India and international markets.
 //             </p>
 //           </motion.div>
 
@@ -141,7 +137,7 @@
 //                   </a>
 //                   <span className="text-slate-600">•</span>
 //                   <a
-//                     href="tel:+919997422668"
+//                     href="tel:+919410409450"
 //                     className="text-sm text-slate-400 hover:text-sky-400 transition-colors duration-300"
 //                   >
 //                     +91 94104 09450
@@ -151,23 +147,13 @@
 //             </ul>
 //           </motion.div>
 
-//           {/* Business Hours + Social */}
+//           {/* Social */}
 //           <motion.div
 //             initial={{ opacity: 0, y: 20 }}
 //             whileInView={{ opacity: 1, y: 0 }}
 //             viewport={{ once: true }}
 //             transition={{ duration: 0.6, delay: 0.3 }}
 //           >
-//             {/* <h4 className="text-sm font-semibold tracking-[0.2em] uppercase text-sky-400 mb-5">
-//               Business Hours
-//             </h4>
-//             <ul className="flex flex-col gap-2 mb-6">
-//               <li className="text-sm text-slate-400">
-//                 Mon - Sat: 9:00 AM - 7:00 PM
-//               </li>
-//               <li className="text-sm text-slate-400">Sunday: Closed</li>
-//             </ul> */}
-
 //             <h4 className="text-sm font-semibold tracking-[0.2em] uppercase text-sky-400 mb-4">
 //               Follow Us
 //             </h4>
@@ -192,11 +178,28 @@
 //         {/* Divider */}
 //         <div className="h-px bg-gradient-to-r from-transparent via-sky-500/30 to-transparent my-10"></div>
 
+//         {/* Legal links */}
+//         <nav
+//           aria-label="Legal"
+//           className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-6"
+//         >
+//           {LEGAL_LINKS.map((link) => (
+//             <Link
+//               key={link.path}
+//               to={link.path}
+//               className="text-xs sm:text-sm text-slate-400 hover:text-sky-400 transition-colors duration-300"
+//             >
+//               {link.label}
+//             </Link>
+//           ))}
+//         </nav>
+
 //         {/* Bottom bar */}
-//         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+//         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 text-center sm:text-left">
 //           <p>© {year} Varelia Lifesciences Pvt. Ltd. All rights reserved.</p>
 //           <p>
-//             Products manufactured under license by third-party manufacturers.
+//             For B2B buyers only. Products are supplied through qualified
+//             third-party manufacturing partners.
 //           </p>
 //           <p>
 //             Developed By{" "}
@@ -214,6 +217,7 @@
 //     </footer>
 //   );
 // }
+
 
 
 
@@ -237,6 +241,11 @@ const LEGAL_LINKS = [
   { label: "Privacy Policy", path: "/privacy" },
   { label: "Terms & Conditions", path: "/terms" },
   { label: "Disclaimer", path: "/disclaimer" },
+];
+
+const EMAILS = [
+  "export@varelialifesciences.com",
+  "domestic@varelialifesciences.com",
 ];
 
 const SOCIAL_LINKS = [
@@ -273,9 +282,14 @@ export default function Footer() {
                 alt="Varelia Lifesciences"
                 className="h-8 w-auto object-contain"
               />
-              <h3 className="text-lg font-bold text-white">
-                <span className="text-sky-400">Varelia</span> Lifesciences
-              </h3>
+              <div className="flex flex-col leading-tight">
+                <h3 className="text-lg font-bold text-white">
+                  <span className="text-sky-400">Varelia</span> Lifesciences
+                </h3>
+                <span className="text-[10px] font-semibold tracking-[0.25em] uppercase text-slate-300">
+                  Pvt. Ltd.
+                </span>
+              </div>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed max-w-xs">
               A pharmaceutical merchant exporter and domestic supplier of IV
@@ -322,27 +336,23 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-sky-400 mt-0.5 shrink-0" />
                 <span className="text-sm text-slate-400">
-                  2nd Floor, Opposite Grand Square, Hapur Road, Meerut, Uttar
-                  Pradesh – 250002
+                 Building No. 1250, 2nd Floor, Opposite Grand Square, Hapur Road, Meerut, Uttar Pradesh – 250002
                 </span>
               </li>
-              <li className="flex items-start gap-3">
-                <Mail size={16} className="text-sky-400 mt-0.5 shrink-0" />
-                <div className="flex flex-col gap-1">
+
+              {/* Each email has its own Mail icon */}
+              {EMAILS.map((email) => (
+                <li key={email} className="flex items-start gap-3">
+                  <Mail size={16} className="text-sky-400 mt-0.5 shrink-0" />
                   <a
-                    href="mailto:export@varelialifesciences.com"
+                    href={`mailto:${email}`}
                     className="text-sm text-slate-400 break-all hover:text-sky-400 transition-colors duration-300"
                   >
-                    export@varelialifesciences.com
+                    {email}
                   </a>
-                  <a
-                    href="mailto:domestic@varelialifesciences.com"
-                    className="text-sm text-slate-400 break-all hover:text-sky-400 transition-colors duration-300"
-                  >
-                    domestic@varelialifesciences.com
-                  </a>
-                </div>
-              </li>
+                </li>
+              ))}
+
               <li className="flex items-start gap-3">
                 <Phone size={16} className="text-sky-400 mt-0.5 shrink-0" />
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1">

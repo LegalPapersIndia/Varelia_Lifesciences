@@ -212,7 +212,7 @@ const CompanyStory = () => {
                     Meerut, Uttar Pradesh
                   </p>
                   <p className="text-xs text-slate-500">
-                    2nd Floor, Opposite Grand Square, Hapur Road
+                    Building No. 1250, 2nd Floor, Opposite Grand Square, Hapur Road, 250002
                   </p>
                 </div>
               </div>
