@@ -1,9 +1,13 @@
+
+
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, MessageCircle, CheckCircle2, Building2, Globe2, Info } from "lucide-react";
+import { X, MessageCircle, Mail, Building2, Globe2, Info } from "lucide-react";
 import { products } from "../data/products";
 import { WHATSAPP_NUMBER, buyerTypes } from "../data/siteConfig";
+import EnquirySuccess from "./EnquirySuccess";
+import { getMailtoUrl, getGmailUrl } from "../utils/enquiryLinks";
 
 const inputClass =
   "w-full bg-white border border-slate-200 px-3.5 py-2.5 rounded-lg focus:ring-2 focus:ring-sky-400/50 focus:border-sky-400/50 outline-none text-slate-900 placeholder-slate-400 transition-all duration-300 text-sm";
@@ -31,7 +35,11 @@ const EnquiryModal = ({
   const [buyerType, setBuyerType] = useState(buyer);
   const [formData, setFormData] = useState(emptyForm);
   const [sentUrl, setSentUrl] = useState("");
+  const [sentText, setSentText] = useState("");
+  const [sentChannel, setSentChannel] = useState("whatsapp");
   const firstInput = useRef(null);
+  // Kaunsa button dabaya: "whatsapp" | "email" | "gmail" (submit se pehle onClick mein set hota hai)
+  const channelRef = useRef("whatsapp");
 
   // Har baar modal khulne par form reset karo
   useEffect(() => {
@@ -40,6 +48,9 @@ const EnquiryModal = ({
       setBuyerType(buyer);
       setFormData({ ...emptyForm, product });
       setSentUrl("");
+      setSentText("");
+      setSentChannel("whatsapp");
+      channelRef.current = "whatsapp";
       setTimeout(() => firstInput.current?.focus(), 150);
     }
   }, [open, defaultRoute, buyer, product]);
@@ -92,8 +103,22 @@ const EnquiryModal = ({
       lines.join("\n")
     )}`;
 
-    window.open(url, "_blank");
+    const text = lines.join("\n");
+    const channel = channelRef.current;
+
+    if (channel === "email") {
+      // Mail app khulega (To, Subject aur message pehle se bhara)
+      window.location.href = getMailtoUrl(text);
+    } else if (channel === "gmail") {
+      // Gmail ka compose page naye tab mein
+      window.open(getGmailUrl(text), "_blank");
+    } else {
+      window.open(url, "_blank");
+    }
+
     setSentUrl(url);
+    setSentText(text);
+    setSentChannel(channel);
   };
 
   return createPortal(
@@ -138,35 +163,14 @@ const EnquiryModal = ({
 
             {sentUrl ? (
               /* Success state */
-              <div className="px-6 py-10 text-center">
-                <div className="w-14 h-14 mx-auto bg-sky-50 rounded-full flex items-center justify-center mb-4">
-                  <CheckCircle2 size={30} className="text-sky-600" />
-                </div>
-                <h4 className="text-lg font-semibold text-slate-900 mb-2">
-                  Your enquiry is ready
-                </h4>
-                <p className="text-sm text-slate-600 mb-6">
-                  WhatsApp should have opened in a new tab. If it didn't, use
-                  the button below to send it.
-                </p>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                  <a
-                    href={sentUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-700 text-white font-semibold px-6 py-2.5 rounded-lg text-sm transition-colors"
-                  >
-                    <MessageCircle size={16} />
-                    Open WhatsApp
-                  </a>
-                  <button
-                    type="button"
-                    onClick={onClose}
-                    className="text-sm font-medium text-slate-600 hover:text-slate-900 px-4 py-2.5"
-                  >
-                    Close
-                  </button>
-                </div>
+              <div className="px-6 py-8">
+                <EnquirySuccess
+                  whatsappUrl={sentUrl}
+                  message={sentText}
+                  channel={sentChannel}
+                  onDone={onClose}
+                  doneLabel="Close"
+                />
               </div>
             ) : (
               /* Form */
@@ -315,13 +319,40 @@ const EnquiryModal = ({
                   </p>
                 </div>
 
-                <button
-                  type="submit"
-                  className="w-full bg-sky-600 hover:bg-sky-700 text-white py-3 rounded-lg font-semibold text-sm flex items-center justify-center gap-2 transition-colors"
-                >
-                  <MessageCircle size={17} />
-                  Send Enquiry via WhatsApp
-                </button>
+                {/* Send options — user jis se chahe bhej sakta hai */}
+                <div>
+                  <p className="text-xs font-medium text-slate-500 mb-2 text-center">
+                    Choose how you'd like to send your enquiry
+                  </p>
+                  <div className="space-y-3">
+                    <button
+                      type="submit"
+                      onClick={() => (channelRef.current = "whatsapp")}
+                      className="w-full bg-sky-600 hover:bg-sky-700 text-white py-3 rounded-lg font-semibold text-sm flex items-center justify-center gap-2 transition-colors"
+                    >
+                      <MessageCircle size={17} />
+                      Send via WhatsApp
+                    </button>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <button
+                        type="submit"
+                        onClick={() => (channelRef.current = "email")}
+                        className="bg-white border border-sky-200 text-sky-700 hover:bg-sky-50 py-3 rounded-lg font-semibold text-sm flex items-center justify-center gap-2 transition-colors"
+                      >
+                        <Mail size={17} />
+                        Send via Email App
+                      </button>
+                      <button
+                        type="submit"
+                        onClick={() => (channelRef.current = "gmail")}
+                        className="bg-white border border-sky-200 text-sky-700 hover:bg-sky-50 py-3 rounded-lg font-semibold text-sm flex items-center justify-center gap-2 transition-colors"
+                      >
+                        <Mail size={17} />
+                        Open in Gmail
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </form>
             )}
           </motion.div>

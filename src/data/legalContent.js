@@ -87,7 +87,7 @@ export const legalDocs = {
         id: "your-rights",
         heading: "Your choices and rights",
         paragraphs: [
-          "To the extent applicable under Indian law, including the Digital Personal Data Protection Act, 2023, you may ask us to give you access to, correct or delete the personal information you have shared with us. You may also ask us to stop contacting you about an enquiry.",
+          "To the extent applicable under Indian law, including the Digital Personal Data Protection Act, 2026, you may ask us to give you access to, correct or delete the personal information you have shared with us. You may also ask us to stop contacting you about an enquiry.",
           "To make a request, write to us at the email addresses given below. We may need to verify your identity, and some information may have to be kept where the law requires it.",
         ],
       },

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ChevronRight, Handshake } from "lucide-react";
-import partnersBg from "../../assets/Franchise.jpg";
+import partnersBg from "../../assets/Franchise.png";
 
 const PartnersHero = () => {
   return (

@@ -1,5 +1,4 @@
 
-
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -10,6 +9,7 @@ import {
   Factory,
 } from "lucide-react";
 import heroImage from "../../assets/hero1.png";
+import { useQuoteModal } from "../../context/QuoteModalContext";
 
 const ctaStrip = [
   { icon: Handshake, label: "Qualified Manufacturing Partners" },
@@ -35,6 +35,8 @@ const floatingCards = [
 ];
 
 const Hero = () => {
+  const { openQuote } = useQuoteModal();
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-sky-50 via-white to-sky-100">
       {/* Soft background shapes */}
@@ -83,8 +85,9 @@ const Hero = () => {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-              <Link
-                to="/contact"
+              <button
+                type="button"
+                onClick={openQuote}
                 className="group relative inline-flex items-center justify-center gap-2 bg-sky-700 text-white font-semibold px-7 py-3.5 rounded-full hover:bg-sky-800 hover:scale-105 transition-all duration-300 shadow-lg shadow-sky-700/25 overflow-hidden"
               >
                 <span className="relative z-10">Request a Quote</span>
@@ -93,7 +96,7 @@ const Hero = () => {
                   className="relative z-10 group-hover:translate-x-1 transition-transform"
                 />
                 <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-12" />
-              </Link>
+              </button>
 
               <Link
                 to="/products"

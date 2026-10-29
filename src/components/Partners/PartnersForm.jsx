@@ -7,17 +7,19 @@
 //   User,
 //   Building2,
 //   Phone,
+//   Mail,
 //   Globe2,
 //   Briefcase,
 //   Package,
+//   Factory,
+//   FileCheck,
 //   Hash,
 //   ChevronDown,
 //   CheckCircle2,
+//   Info,
 // } from "lucide-react";
 // import franchiseSideImg from "../../assets/franchise-side1.png";
-
-// // Client's WhatsApp number
-// const WHATSAPP_NUMBER = "919410409450";
+// import { WHATSAPP_NUMBER } from "../../data/siteConfig";
 
 // const highlights = [
 //   "Qualified Manufacturing Partners",
@@ -25,7 +27,6 @@
 //   "Transparent Communication",
 // ];
 
-// // Pehle 3 options PartnerTypes ke cards ke `value` se match hone chahiye ye business
 // const businessTypes = [
 //   "Distribution Partner",
 //   "Import / Export Partner",
@@ -37,11 +38,13 @@
 // const initialData = {
 //   name: "",
 //   company: "",
+//   email: "",
 //   phone: "",
 //   location: "",
 //   businessType: "",
 //   product: "",
 //   quantity: "",
+//   certifications: "",
 //   message: "",
 // };
 
@@ -50,12 +53,14 @@
 //   const [loading, setLoading] = useState(false);
 //   const [status, setStatus] = useState("");
 
-//   // Partner card se aaye toh Business Type pre-select ho jaye
+//   // Partner card se aaya type form mein set karo
 //   useEffect(() => {
 //     if (partnerType) {
 //       setFormData((prev) => ({ ...prev, businessType: partnerType }));
 //     }
 //   }, [partnerType]);
+
+//   const isManufacturer = formData.businessType === "Manufacturing Partner";
 
 //   const handleChange = (e) => {
 //     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -66,21 +71,34 @@
 //     setLoading(true);
 //     setStatus("");
 
-//     const text = [
+//     const lines = [
 //       "New Partnership Enquiry:",
 //       "",
 //       `Name: ${formData.name}`,
 //       `Company: ${formData.company}`,
+//       `Email: ${formData.email}`,
 //       `Phone: ${formData.phone}`,
 //       `Country / City: ${formData.location}`,
 //       `Business Type: ${formData.businessType}`,
-//       `Product & Pack Size: ${formData.product}`,
-//       `Required Quantity: ${formData.quantity}`,
-//       `Message: ${formData.message}`,
-//     ].join("\n");
+//     ];
+
+//     if (isManufacturer) {
+//       lines.push(
+//         `Products Manufactured: ${formData.product || "-"}`,
+//         `Licences & Certifications: ${formData.certifications || "-"}`,
+//         `Production Capacity: ${formData.quantity || "-"}`
+//       );
+//     } else {
+//       lines.push(
+//         `Product & Pack Size: ${formData.product || "-"}`,
+//         `Required Quantity: ${formData.quantity || "-"}`
+//       );
+//     }
+
+//     lines.push(`Message: ${formData.message || "-"}`);
 
 //     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-//       text
+//       lines.join("\n")
 //     )}`;
 
 //     setTimeout(() => {
@@ -97,14 +115,44 @@
 //   const textFields = [
 //     { name: "name", type: "text", placeholder: "Your Name", icon: User, required: true },
 //     { name: "company", type: "text", placeholder: "Company Name", icon: Building2, required: true },
+//     { name: "email", type: "email", placeholder: "Business Email", icon: Mail, required: true },
 //     { name: "phone", type: "tel", placeholder: "Phone / WhatsApp", icon: Phone, required: true },
-//     { name: "location", type: "text", placeholder: "Country / City", icon: Globe2, required: true },
 //   ];
 
-//   const detailFields = [
-//     { name: "product", type: "text", placeholder: "Product & Pack Size", icon: Package, required: false },
-//     { name: "quantity", type: "text", placeholder: "Required Quantity", icon: Hash, required: false },
-//   ];
+//   // Fields change according to partner type
+//   const detailFields = isManufacturer
+//     ? [
+//         {
+//           name: "product",
+//           type: "text",
+//           placeholder: "Products You Manufacture",
+//           icon: Factory,
+//           required: true,
+//         },
+//         {
+//           name: "quantity",
+//           type: "text",
+//           placeholder: "Production Capacity (optional)",
+//           icon: Hash,
+//           required: false,
+//         },
+//       ]
+//     : [
+//         {
+//           name: "product",
+//           type: "text",
+//           placeholder: "Product & Pack Size",
+//           icon: Package,
+//           required: false,
+//         },
+//         {
+//           name: "quantity",
+//           type: "text",
+//           placeholder: "Required Quantity",
+//           icon: Hash,
+//           required: false,
+//         },
+//       ];
 
 //   const renderInput = (field) => {
 //     const Icon = field.icon;
@@ -147,8 +195,8 @@
 //             Send Your <span className="text-sky-600 italic">Enquiry</span>
 //           </h2>
 //           <p className="text-slate-600 text-sm sm:text-base mt-3 max-w-xl mx-auto">
-//             Tell us what you need. Domestic, export or partnership, our team
-//             will connect with you on WhatsApp.
+//             Tell us about your business and what you are looking for. Our team
+//             will review your enquiry and connect with you.
 //           </p>
 //         </motion.div>
 
@@ -228,10 +276,19 @@
 //             className="bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-sky-100 order-1 lg:order-2 flex flex-col justify-center"
 //           >
 //             <form onSubmit={handleSubmit} className="space-y-4">
-//               {/* Name / Company / Phone / Location */}
+//               {/* Name / Company / Email / Phone */}
 //               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 //                 {textFields.map(renderInput)}
 //               </div>
+
+//               {/* Country / City */}
+//               {renderInput({
+//                 name: "location",
+//                 type: "text",
+//                 placeholder: "Country / City",
+//                 icon: Globe2,
+//                 required: true,
+//               })}
 
 //               {/* Business Type */}
 //               <div className="relative">
@@ -263,19 +320,44 @@
 //                 />
 //               </div>
 
-//               {/* Product / Quantity */}
+//               {/* Product / Quantity (changes for manufacturers) */}
 //               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 //                 {detailFields.map(renderInput)}
 //               </div>
 
+//               {/* Certifications — only for manufacturing partners */}
+//               {isManufacturer &&
+//                 renderInput({
+//                   name: "certifications",
+//                   type: "text",
+//                   placeholder: "Licences & Certifications Held (e.g. mfg licence, GMP)",
+//                   icon: FileCheck,
+//                   required: false,
+//                 })}
+
 //               <textarea
 //                 rows="3"
 //                 name="message"
-//                 placeholder="Message (optional)"
+//                 placeholder={
+//                   isManufacturer
+//                     ? "Tell us about your facility and product range (optional)"
+//                     : "Message (optional)"
+//                 }
 //                 value={formData.message}
 //                 onChange={handleChange}
 //                 className="w-full bg-sky-50/50 border border-sky-100 px-4 py-3 rounded-xl resize-none focus:ring-2 focus:ring-sky-400/30 focus:border-sky-400 outline-none text-slate-900 placeholder-slate-400 transition-all duration-300"
 //               />
+
+//               {/* Notes */}
+//               <div className="flex items-start gap-2 text-xs text-slate-500 leading-relaxed">
+//                 <Info size={14} className="shrink-0 mt-0.5 text-sky-600" />
+//                 <p>
+//                   {isManufacturer
+//                     ? "Please do not enter licence numbers or confidential documents here. Documents are requested during evaluation. "
+//                     : "For B2B enquiries only. "}
+//                   By submitting, you agree to be contacted about this enquiry.
+//                 </p>
+//               </div>
 
 //               <motion.button
 //                 whileHover={{ scale: 1.02 }}
@@ -311,7 +393,7 @@
 
 
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   MessageCircle,
@@ -331,6 +413,8 @@ import {
 } from "lucide-react";
 import franchiseSideImg from "../../assets/franchise-side1.png";
 import { WHATSAPP_NUMBER } from "../../data/siteConfig";
+import EnquirySuccess from "../EnquirySuccess";
+import { getMailtoUrl, getGmailUrl } from "../../utils/enquiryLinks";
 
 const highlights = [
   "Qualified Manufacturing Partners",
@@ -363,6 +447,9 @@ const FranchiseForm = ({ partnerType }) => {
   const [formData, setFormData] = useState(initialData);
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
+  const [sent, setSent] = useState(null);
+  // Kaunsa button dabaya: "whatsapp" | "email" | "gmail" (submit se pehle onClick mein set hota hai)
+  const channelRef = useRef("whatsapp");
 
   // Partner card se aaya type form mein set karo
   useEffect(() => {
@@ -412,11 +499,22 @@ const FranchiseForm = ({ partnerType }) => {
       lines.join("\n")
     )}`;
 
+    const plainText = lines.join("\n");
+    const channel = channelRef.current;
+
     setTimeout(() => {
       setLoading(false);
-      setStatus("Redirecting you to WhatsApp...");
-      window.open(whatsappUrl, "_blank");
+      if (channel === "email") {
+        // Mail app khulega (To, Subject aur message pehle se bhara)
+        window.location.href = getMailtoUrl(plainText);
+      } else if (channel === "gmail") {
+        // Gmail ka compose page naye tab mein
+        window.open(getGmailUrl(plainText), "_blank");
+      } else {
+        window.open(whatsappUrl, "_blank");
+      }
       setFormData(initialData);
+      setSent({ url: whatsappUrl, text: plainText, channel });
     }, 600);
   };
 
@@ -586,113 +684,154 @@ const FranchiseForm = ({ partnerType }) => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-sky-100 order-1 lg:order-2 flex flex-col justify-center"
           >
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Name / Company / Email / Phone */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {textFields.map(renderInput)}
-              </div>
+            {sent ? (
+              <EnquirySuccess
+                whatsappUrl={sent.url}
+                message={sent.text}
+                channel={sent.channel}
+                onDone={() => setSent(null)}
+                doneLabel="Send another enquiry"
+              />
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Name / Company / Email / Phone */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {textFields.map(renderInput)}
+                </div>
 
-              {/* Country / City */}
-              {renderInput({
-                name: "location",
-                type: "text",
-                placeholder: "Country / City",
-                icon: Globe2,
-                required: true,
-              })}
-
-              {/* Business Type */}
-              <div className="relative">
-                <Briefcase
-                  size={18}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-sky-400 pointer-events-none"
-                />
-                <select
-                  name="businessType"
-                  value={formData.businessType}
-                  onChange={handleChange}
-                  required
-                  className={`${inputClass} appearance-none pr-10 ${
-                    formData.businessType ? "text-slate-900" : "text-slate-400"
-                  }`}
-                >
-                  <option value="" disabled>
-                    Business Type
-                  </option>
-                  {businessTypes.map((type) => (
-                    <option key={type} value={type} className="text-slate-900">
-                      {type}
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown
-                  size={18}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-sky-400 pointer-events-none"
-                />
-              </div>
-
-              {/* Product / Quantity (changes for manufacturers) */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {detailFields.map(renderInput)}
-              </div>
-
-              {/* Certifications — only for manufacturing partners */}
-              {isManufacturer &&
-                renderInput({
-                  name: "certifications",
+                {/* Country / City */}
+                {renderInput({
+                  name: "location",
                   type: "text",
-                  placeholder: "Licences & Certifications Held (e.g. mfg licence, GMP)",
-                  icon: FileCheck,
-                  required: false,
+                  placeholder: "Country / City",
+                  icon: Globe2,
+                  required: true,
                 })}
 
-              <textarea
-                rows="3"
-                name="message"
-                placeholder={
-                  isManufacturer
-                    ? "Tell us about your facility and product range (optional)"
-                    : "Message (optional)"
-                }
-                value={formData.message}
-                onChange={handleChange}
-                className="w-full bg-sky-50/50 border border-sky-100 px-4 py-3 rounded-xl resize-none focus:ring-2 focus:ring-sky-400/30 focus:border-sky-400 outline-none text-slate-900 placeholder-slate-400 transition-all duration-300"
-              />
+                {/* Business Type */}
+                <div className="relative">
+                  <Briefcase
+                    size={18}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 text-sky-400 pointer-events-none"
+                  />
+                  <select
+                    name="businessType"
+                    value={formData.businessType}
+                    onChange={handleChange}
+                    required
+                    className={`${inputClass} appearance-none pr-10 ${
+                      formData.businessType ? "text-slate-900" : "text-slate-400"
+                    }`}
+                  >
+                    <option value="" disabled>
+                      Business Type
+                    </option>
+                    {businessTypes.map((type) => (
+                      <option key={type} value={type} className="text-slate-900">
+                        {type}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown
+                    size={18}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-sky-400 pointer-events-none"
+                  />
+                </div>
 
-              {/* Notes */}
-              <div className="flex items-start gap-2 text-xs text-slate-500 leading-relaxed">
-                <Info size={14} className="shrink-0 mt-0.5 text-sky-600" />
-                <p>
-                  {isManufacturer
-                    ? "Please do not enter licence numbers or confidential documents here. Documents are requested during evaluation. "
-                    : "For B2B enquiries only. "}
-                  By submitting, you agree to be contacted about this enquiry.
-                </p>
-              </div>
+                {/* Product / Quantity (changes for manufacturers) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {detailFields.map(renderInput)}
+                </div>
 
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                type="submit"
-                disabled={loading}
-                className={`w-full bg-sky-600 hover:bg-sky-700 text-white py-3.5 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all duration-300 ${
-                  loading ? "opacity-70 cursor-not-allowed" : ""
-                }`}
-              >
-                <MessageCircle size={18} />
-                {loading ? "Redirecting..." : "Send Enquiry via WhatsApp"}
-              </motion.button>
+                {/* Certifications — only for manufacturing partners */}
+                {isManufacturer &&
+                  renderInput({
+                    name: "certifications",
+                    type: "text",
+                    placeholder: "Licences & Certifications Held (e.g. mfg licence, GMP)",
+                    icon: FileCheck,
+                    required: false,
+                  })}
 
-              {status && (
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="text-sky-600 text-sm text-center"
-                >
-                  {status}
-                </motion.p>
-              )}
-            </form>
+                <textarea
+                  rows="3"
+                  name="message"
+                  placeholder={
+                    isManufacturer
+                      ? "Tell us about your facility and product range (optional)"
+                      : "Message (optional)"
+                  }
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full bg-sky-50/50 border border-sky-100 px-4 py-3 rounded-xl resize-none focus:ring-2 focus:ring-sky-400/30 focus:border-sky-400 outline-none text-slate-900 placeholder-slate-400 transition-all duration-300"
+                />
+
+                {/* Notes */}
+                <div className="flex items-start gap-2 text-xs text-slate-500 leading-relaxed">
+                  <Info size={14} className="shrink-0 mt-0.5 text-sky-600" />
+                  <p>
+                    {isManufacturer
+                      ? "Please do not enter licence numbers or confidential documents here. Documents are requested during evaluation. "
+                      : "For B2B enquiries only. "}
+                    By submitting, you agree to be contacted about this enquiry.
+                  </p>
+                </div>
+
+                {/* Send options — user jis se chahe bhej sakta hai */}
+                <div>
+                  <p className="text-xs font-medium text-slate-500 mb-2 text-center">
+                    Choose how you'd like to send your enquiry
+                  </p>
+                  <div className="space-y-3">
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      onClick={() => (channelRef.current = "whatsapp")}
+                      className={`w-full bg-sky-600 hover:bg-sky-700 text-white py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 ${
+                        loading ? "opacity-70 cursor-not-allowed" : ""
+                      }`}
+                    >
+                      <MessageCircle size={17} />
+                      Send via WhatsApp
+                    </button>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <button
+                        type="submit"
+                        disabled={loading}
+                        onClick={() => (channelRef.current = "email")}
+                        className={`bg-white border border-sky-200 text-sky-700 hover:bg-sky-50 py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 ${
+                          loading ? "opacity-70 cursor-not-allowed" : ""
+                        }`}
+                      >
+                        <Mail size={17} />
+                        Send via Email App
+                      </button>
+                      <button
+                        type="submit"
+                        disabled={loading}
+                        onClick={() => (channelRef.current = "gmail")}
+                        className={`bg-white border border-sky-200 text-sky-700 hover:bg-sky-50 py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 ${
+                          loading ? "opacity-70 cursor-not-allowed" : ""
+                        }`}
+                      >
+                        <Mail size={17} />
+                        Open in Gmail
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {status && (
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-sky-600 text-sm text-center"
+                  >
+                    {status}
+                  </motion.p>
+                )}
+              </form>
+            )}
           </motion.div>
         </div>
       </div>
